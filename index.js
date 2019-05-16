@@ -55,7 +55,7 @@ client.on("message", async message => {
   const command = args.shift().toLowerCase();
   
   // Let's go with a few common example commands! Feel free to delete or change those.
-  if(command === "yardım" || "bilgi" || "bilgiler" || "bot") {
+  if(command === "bilgi") {
     let totalSeconds = (client.uptime / 1000);
     let days = Math.floor(totalSeconds / 86400);
     let hours = Math.floor(totalSeconds / 3600);
@@ -69,7 +69,7 @@ client.on("message", async message => {
         .setTitle('MaruuBot Bilgileri')
         .setThumbnail(client.user.avatarURL)
         .addField('Bot Kodlayıcısı', 'Xuance#1586', true)
-        .addField('Sürüm', 'beta build 0.0.416', true)
+        .addField('Sürüm', 'beta build 0.0.426', true)
         .addField('Son Güncelleme', 'May 17 - hosting', true)
         .addField('Oluşturuldu', '13 May 2019 GMT+3', true)
         .addField('Kitaplık', 'discord.js', true)
@@ -89,8 +89,8 @@ client.on("message", async message => {
         .setThumbnail(client.user.avatarURL)
         .addField('m!ping', 'Gecikmenizi ölçer', true)
         .addField('m!söyle', 'Verilen mesajı söyler', true)
-        .addField('m!rolver <oyuncu>', 'Oyuncuya rol verir.', true)
-        .addField('m!rolal <oyuncu>', 'Oyuncunun rolunu alır.', true)
+        .addField('m!rolver [BAKIMDA]', 'Oyuncuya rol verir.', true)
+        .addField('m!rolal [BAKIMDA]', 'Oyuncunun rolunu alır.', true)
         .addField('m!gay [<oyuncu>]', 'Ne kadar gaysınız?', true)
         .addField('m!at <oyuncu>', 'Belirtilen oyuncuyu atar.', true)
         .addField('m!ban <oyuncu>', 'Oyuncuyu yasaklar.', true)
@@ -113,24 +113,24 @@ client.on("message", async message => {
     // makes the bot say something and delete the message. As an example, it's open to anyone to use. 
     // To get the "message" itself we join the `args` back into a string with spaces: 
     const sayMessage = args.join(" ");
-    if(!sayMessage) return message.channel.send("You didn\'t entered any arguments.");
+    if(!sayMessage) return message.channel.send("Söylenecek mesajı girmediniz.");
     // Then we delete the command message (sneaky, right?). The catch just ignores the error with a cute smiley thing.
     message.delete().catch(O_o=>{}); 
     // And we get the bot to say the thing: 
     message.channel.send(sayMessage);
   }
 
-  if(command === "rolver") {
+/*  if(command === "rolver") {
     if(message.member.roles.some === ["Executioner", "Boss", "Godfather", "Serial Killer", "Mafioso"]) {
       message.channel.send("başarılı");
-      /*
+
       let member = message.mentions.members.first() || message.guild.members.get(args[0]);
       let role = args.slice(1).join(' ');
       if(!member) return message.channel.send("Please enter a member of this guild.");
       if(!message.guild.roles.find.some(role)) return message.channel.send(`You need to create a role called ${role} first.`);
 
       member.addRole(role).catch(console.error);
-    */}
+    }
   }
 
   if(command === "rolal") {
@@ -140,11 +140,11 @@ client.on("message", async message => {
 
     let member = message.mentions.members.first() || message.guild.members.get(args[0]);
     let role = message.guild.roles.find(role => role.name === "Godfather");
-    if(!member) return message.channel.send("Please enter a member of this guild.");
+    if(!member) return message.channel.send("Lütfen sunucunun bir üyesini belirtin.");
     if(!role) return message.channel.send("You need to create a role called 'Godfather' first.");
 
     member.removeRole(role).catch(console.error);  
-  }
+  }*/
 
   if(command === "gay") {
 
@@ -185,11 +185,11 @@ client.on("message", async message => {
     // slice(1) removes the first part, which here should be the user mention or ID
     // join(' ') takes all the various parts to make it a single string.
     let reason = args.slice(1).join(' ');
-    if(!reason) reason = "Sebep girilmedi.";
+    if(!reason) reason = "Sebep belirtilmedi.";
     
     // Now, time for a swift kick in the nuts!
     await member.kick(reason)
-      .catch(error => message.channel.send(`Üzgünüm ${message.author} atılamadı çünkü: ${error}`));
+      .catch(error => message.channel.send(`Üzgünüm ${message.author} atılamaz: ${error}`));
     message.channel.send(`${member.user.tag}, ${message.author.tag} tarafından atıldı, çünkü: ${reason}`);
 
   }
@@ -202,16 +202,16 @@ client.on("message", async message => {
     
     let member = message.mentions.members.first();
     if(!member)
-      return message.channel.send("Please mention a valid member of this server");
+      return message.channel.send("Lütfen bu sunucunun bir üyesini belirtin.");
     if(!member.bannable) 
-      return message.channel.send("I cannot ban this user! Do they have a higher role? Do I have ban permissions?");
+      return message.channel.send("Bu kullanıcı atılamaz.");
 
     let reason = args.slice(1).join(' ');
-    if(!reason) reason = "No reason provided";
+    if(!reason) reason = "Sebep belirtilmedi.";
     
     await member.ban(reason)
-      .catch(error => message.channel.send(`Sorry ${message.author} I couldn't ban because of : ${error}`));
-    message.channel.send(`${member.user.tag} has been banned by ${message.author.tag} because: ${reason}`);
+      .catch(error => message.channel.send(`Üzgünüm, ${message.author} yasaklanamaz: ${error}`));
+    message.channel.send(`${member.user.tag} ${message.author.tag} tarafından yasaklandı. Sebep: ${reason}`);
   }
   
   if(command === "sil") {
@@ -222,12 +222,12 @@ client.on("message", async message => {
     
     // Ooooh nice, combined conditions. <3
     if(!deleteCount || deleteCount < 2 || deleteCount > 100)
-      return message.channel.send("Please provide a number between 2 and 100 for the number of messages to delete");
+      return message.channel.send("Lütfen 2 ile 100 arası bir sayı belirtin.");
     
     // So we get our messages, and delete them. Simple enough, right?
     const fetched = await message.channel.fetchMessages({limit: deleteCount});
     message.channel.bulkDelete(fetched)
-      .catch(error => message.channel.send(`Couldn't delete messages because of: ${error}`));
+      .catch(error => message.channel.send(`Mesajları silemedim, çünkü: ${error}`));
   }
 });
 
