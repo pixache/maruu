@@ -2,24 +2,19 @@
   "name": "package",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "dependencies": {
     "discord.js": "^11.3.2",
     "discord.js-arbitrary-ffmpeg": "^1.0.0",
     "ffmpeg": "0.0.4",
     "ffmpeg-binaries": "^4.0.0",
-    "fortnite": "^4.1.1",
     "got": "^8.3.2",
     "node-gyp": "^3.7.0",
-    "nodemon": "^1.17.5",
-    "opusscript": "0.0.6",
     "rebuild": "^0.1.2",
-    "snekfetch": "^4.0.4",
-    "ytdl-core": "^0.20.4"
   },
   "devDependencies": {},
   "scripts": {
-    "start": "node index.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC"
