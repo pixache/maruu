@@ -61,7 +61,7 @@ client.on("message", async message => {
     let hours = Math.floor(totalSeconds / 3600);
     totalSeconds %= 3600;
     let minutes = Math.floor(totalSeconds / 60);
-    let seconds = totalSeconds % 60;
+    let seconds = Math.floor(totalSeconds % 60);
     let uptime = `${days} gün, ${hours} saat, ${minutes} dakika ${seconds} saniye`;
 
     let exampleEmbed = new Discord.RichEmbed()
@@ -73,7 +73,7 @@ client.on("message", async message => {
         .addField('Son Güncelleme', 'May 17 - hosting', true)
         .addField('Oluşturuldu', '13 May 2019 GMT+3', true)
         .addField('Kitaplık', 'discord.js', true)
-        .addField('Online Süresi', Math.floor(uptime))
+        .addField('Online Süresi', uptime)
         .setTimestamp()
         .setFooter(`Komutlar için m!komutlar`, message.author.avatarURL);
 
