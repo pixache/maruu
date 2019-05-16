@@ -55,7 +55,7 @@ client.on("message", async message => {
   const command = args.shift().toLowerCase();
   
   // Let's go with a few common example commands! Feel free to delete or change those.
-  if(command === "yardım") {
+  if(command === "yardım" || "bilgi" || "bilgiler" || "bot") {
     let totalSeconds = (client.uptime / 1000);
     let days = Math.floor(totalSeconds / 86400);
     let hours = Math.floor(totalSeconds / 3600);
