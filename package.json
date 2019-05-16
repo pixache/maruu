@@ -1,21 +1,13 @@
 {
-  "name": "package",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "dependencies": {
-    "discord.js": "^11.3.2",
-    "discord.js-arbitrary-ffmpeg": "^1.0.0",
-    "ffmpeg": "0.0.4",
-    "ffmpeg-binaries": "^4.0.0",
-    "got": "^8.3.2",
-    "node-gyp": "^3.7.0",
-    "rebuild": "^0.1.2"
-  },
-  "devDependencies": {},
+  "name": "Test",
+  "description": "Test",
+  "version": "0.0.0",
+  "main": "bot.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node bot.js"
   },
-  "author": "",
-  "license": "ISC"
+  "dependencies": {
+    "discord.js": "11.1.0",
+    "request": "2.81.0"
+  }
 }
