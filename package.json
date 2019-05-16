@@ -10,7 +10,7 @@
     "ffmpeg-binaries": "^4.0.0",
     "got": "^8.3.2",
     "node-gyp": "^3.7.0",
-    "rebuild": "^0.1.2",
+    "rebuild": "^0.1.2"
   },
   "devDependencies": {},
   "scripts": {
