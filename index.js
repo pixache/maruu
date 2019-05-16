@@ -69,11 +69,11 @@ client.on("message", async message => {
         .setTitle('MaruuBot Bilgileri')
         .setThumbnail(client.user.avatarURL)
         .addField('Bot Kodlayıcısı', 'Xuance#1586', true)
-        .addField('Sürüm', 'beta build 0.0.339', true)
-        .addField('Son Güncelleme', 'May 16 - bugfix', true)
+        .addField('Sürüm', 'beta build 0.0.416', true)
+        .addField('Son Güncelleme', 'May 17 - hosting', true)
         .addField('Oluşturuldu', '13 May 2019 GMT+3', true)
         .addField('Kitaplık', 'discord.js', true)
-        .addField('Online Süresi', uptime)
+        .addField('Online Süresi', Math.floor(uptime))
         .setTimestamp()
         .setFooter(`Komutlar için m!komutlar`, message.author.avatarURL);
 
