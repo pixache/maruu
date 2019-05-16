@@ -2,7 +2,7 @@
   "name": "package",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "index.js",
   "dependencies": {
     "discord.js": "^11.3.2",
     "discord.js-arbitrary-ffmpeg": "^1.0.0",
