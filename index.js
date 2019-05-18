@@ -5,21 +5,25 @@ const prefix = "m!";
 client.on("ready", () => {
   console.log(`Bot has started, with ${client.users.size - 1} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`); 
   console.log('https://discordapp.com/oauth2/authorize?client_id=577503350451339285&scope=bot&permissions=8');
-  client.user.setActivity(`${client.guilds.size} sunucuda takılıyor...`);
+  client.user.setActivity(`${client.guilds.size} sunucu | m!bilgi`);
+  console.log('Server I am in:')
+  client.guilds.forEach((guild) => {
+    console.log(" - " + guild.name)
+  })
 });
 
 client.on("guildCreate", guild => {
   console.log(`New guild joined: ${guild.name} (id: ${guild.id}). This guild has ${guild.memberCount} members!`);
-  client.user.setActivity(`${client.guilds.size} sunucuda takılıyor...`);
+  client.user.setActivity(`${client.guilds.size} sunucu | m!bilgi`);
 });
 
 client.on("guildDelete", guild => {
   console.log(`I have been removed from: ${guild.name} (id: ${guild.id})`);
-  client.user.setActivity(`${client.guilds.size} sunucuda takılıyor...`);
+  client.user.setActivity(`${client.guilds.size} sunucu | m!bilgi`);
 });
 
 client.on('guildMemberAdd', member => {
-    member.guild.channels.get(config.channel).send(`**${member}** sunucuya katıldı, hoş geldin!`); 
+    member.guild.channels.find(ch => ch.name === 'general').send(`**${member}** sunucuya katıldı, hoş geldin!`); 
 });
 
 client.on("message", async message => {
@@ -148,7 +152,7 @@ client.on("message", async message => {
   }
 
   if(command === "at") {
-    if(!message.member.roles.some(r=>["Boss", "Godfather"]) )
+    if(!message.member.hasPermission('KICK_MEMBERS') )
       return message.channel.send(denied);
 
    let member = message.mentions.members.first() || message.guild.members.get(args[0]);
@@ -162,7 +166,15 @@ client.on("message", async message => {
     
     await member.kick(reason)
       .catch(error => message.channel.send(`Üzgünüm ${message.author} atılamaz: ${error}`));
-    message.channel.send(`${member.user.tag}, ${message.author.tag} tarafından atıldı, çünkü: ${reason}`);
+
+    let kicked = new Discord.RichEmbed()
+      .setColor('#0099ff')
+      .setTitle('Kullanıcı Atıldı')
+      .addField(`Atılan:`, `${member.user.tag}`)
+      .addField(`Atan:`, `${message.author.tag}`)
+      .addField(`Sebep:`, `${reason}`)
+      .setTimestamp();
+    message.channel.send(kicked);
 
   }
   
@@ -181,7 +193,15 @@ client.on("message", async message => {
     
     await member.ban(reason)
       .catch(error => message.channel.send(`Üzgünüm, ${message.author} yasaklanamaz: ${error}`));
-    message.channel.send(`${member.user.tag} ${message.author.tag} tarafından yasaklandı. Sebep: ${reason}`);
+
+    let banned = new Discord.RichEmbed()
+      .setColor('#0099ff')
+      .setTitle('Kullanıcı Yasaklandı')
+      .addField(`Atılan:`, `${member.user.tag}`)
+      .addField(`Atan:`, `${message.author.tag}`)
+      .addField(`Sebep:`, `${reason}`)
+      .setTimestamp();
+    message.channel.send(banned);
   }
   
   if(command === "sil") {    
