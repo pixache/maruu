@@ -9,7 +9,7 @@ client.on("ready", () => {
 
 client.on("guildCreate", message => {
     let wlc = new Discord.RichEmbed().setColor(config.yesil).setTitle("Merhabalar!").setDescription(`:wave: Sunucuya beni davet ettiğiniz için teşekkürler!\nm!yardım yazarak yardım alabilirsiniz!`).setTimestamp();
-    let channel = message.guild.channels.find("name", "general");
+    let channel = message.guild.channels.find("name", "general").send(wlc);
 });
 
 client.on("guildMemberAdd", message => {
