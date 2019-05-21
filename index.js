@@ -1,16 +1,10 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
 const config = require("./config.json");
-const sunucular = require("./sunucular.json");
 
 client.on("ready", () => {
   console.log("https://discordapp.com/oauth2/authorize?client_id=577503350451339285&scope=bot&permissions=8");
   client.user.setActivity(`m!yardım`);
-  if(!sunucular.client.guilds.id) {
-    let sunucular.client.guilds.id.isim = client.guilds.name;
-    let sunucular.client.guilds.id.sayi = 0;
-    if(client.guilds.channels.find("name" === "sayi-sayma")) return;
-  }
 });
 
 client.on("guildMemberAdd", message => {
@@ -24,15 +18,6 @@ client.on("guildMemberRemove", message => {
 });
 
 client.on("message", async message => {
-
-  if(message.content === `${sunucular.{guild.id}.sayi + 1}`) {
-    if(message.channel.name === "sayi-sayma") {
-      const sunucular.(guild.id).sayi = sunucular.(guild.id).sayi+1
-    }else {
-      return;
-    }
-  }
-
   if(message.author.bot) return;
   if(message.content.indexOf(config.prefix) !== 0) return;
   const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
@@ -99,7 +84,7 @@ client.on("message", async message => {
         .setTitle("Maruu > Bilgiler")
         .addField(`Destek`, `**Geliştirici:** Xuance#1586\n**Destek Sunucusu:** [Katılmak için tıkla](https://discord.gg/NBA8wYT)`, true)
         .addField(`Bot Durumu`, `**Gecikme:** ${Math.floor(client.ping)}\n**Online süresi:** ${uptime}`, true)
-        .addField(`Sunucu Bilgileri`, `**Sunucular:** ${client.guilds.size}\n**Kanallar:** ${client.channels.channel.parent}\n**Kullanıcılar:** ${client.users.size - 1}`, true)
+        .addField(`Sunucu Bilgileri`, `**Sunucular:** ${client.guilds.size}\n**Kanallar:** ${client.channels.size}\n**Kullanıcılar:** ${client.users.size - 1}`, true)
         .addField(`Diğer Bilgiler`, `**Kitaplık:** discord.js\n**Discord.js Sürümü:** 11.3.2\n**NodeJS Sürümü:** 10.15.3`, true)
         .setTimestamp()
         .setFooter(`Maruu v0.1.1`, client.user.avatarURL);
