@@ -9,7 +9,7 @@ client.on("ready", () => {
 
 client.on("guildCreate", message => {
     let wlc = new Discord.RichEmbed().setColor(config.yesil).setTitle("Merhabalar!").setDescription(`:wave: Sunucuya beni davet ettiğiniz için teşekkürler!\nm!yardım yazarak yardım alabilirsiniz!`).setTimestamp();
-    let channel = message.guild.channels.find("name", "general").send(wlc);
+    let channel = message.guild.channels.find("name", "general");
 });
 
 client.on("guildMemberAdd", message => {
@@ -24,7 +24,7 @@ client.on("guildMemberRemove", message => {
 
 client.on("message", async message => {
   if(message.author.bot) return;
-  if(message.content.indexOf("z!") !== 0) return;
+  if(message.content.indexOf(config.prefix) !== 0) return;
   const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
   const command = args.shift().toLowerCase();
 
