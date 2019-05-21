@@ -9,7 +9,7 @@ client.on("ready", () => {
 
 client.on("guildCreate", message => {
     let wlc = new Discord.RichEmbed().setColor(config.yesil).setTitle("Merhabalar!").setDescription(`:wave: Sunucuya beni davet ettiğiniz için teşekkürler!\nm!yardım yazarak yardım alabilirsiniz!`).setTimestamp();
-    let channel = message.guild.channels.find("name", "general").send(wlc);
+    let channel = message.guild.channels.find("name", "general");
 });
 
 client.on("guildMemberAdd", message => {
@@ -55,7 +55,7 @@ client.on("message", async message => {
 
   if(command === "ban") {
     let denied = new Discord.RichEmbed().setColor(config.kirmizi).setTitle(`${message.author.tag}`).setDescription(":x: Bu komutu kullanamazsın!");
-    if(!message.member.hasPermission(["KICK_MEMBERS", "BAN_MEMBERS"])) return message.channel.send(denied);//
+    if(!message.member.hasPermission(["KICK_MEMBERS", "BAN_MEMBERS"])) return message.channel.send(denied);
 
     let member = message.mentions.members.first();
     if(!member) return message.channel.send("Lütfen bu sunucunun bir üyesini belirtin.");
@@ -82,7 +82,7 @@ client.on("message", async message => {
     let hours = Math.floor(totalSeconds / 3600);
     totalSeconds %= 3600;
     let minutes = Math.floor(totalSeconds / 60);
--    let uptime = `${hours} saat, ${minutes} dakika`;
+    let uptime = `${hours} saat, ${minutes} dakika`;
 
     let bilgi = new Discord.RichEmbed()
         .setColor(config.mavi)
@@ -178,4 +178,4 @@ client.on("message", async message => {
   }
 });
 
-client.login(process.env.BOT_TOKEN);//
+client.login(process.env.BOT_TOKEN);
