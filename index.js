@@ -82,12 +82,12 @@ client.on("message", async message => {
     let bilgi = new Discord.RichEmbed()
         .setColor(config.mavi)
         .setTitle("Maruu > Bilgiler")
-        .addField(`Destek`, `**Bot Kodlayıcısı:** Xuance#1586\n**Destek Sunucusu:** [Katılmak için tıkla](https://discord.gg/NBA8wYT)`, true)
-        .addField(`Bot Durumu`, `**Gecikme:** ${client.ping}\n**Online süresi:** ${uptime}`, true)
-        .addField(`Sunucu Bilgileri`, `**Sunucular:** ${client.guilds.size}\n**Kanallar:** ${client.channels.size}\n**Kullanıcılar:** ${client.users.size - 1}`, true)
+        .addField(`Destek`, `**Geliştirici:** Xuance#1586\n**Destek Sunucusu:** [Katılmak için tıkla](https://discord.gg/NBA8wYT)`, true)
+        .addField(`Bot Durumu`, `**Gecikme:** ${Math.floor(client.ping)}\n**Online süresi:** ${uptime}`, true)
+        .addField(`Sunucu Bilgileri`, `**Sunucular:** ${client.guilds.size}\n**Kanallar:** ${client.channels.parent}\n**Kullanıcılar:** ${client.users.size - 1}`, true)
         .addField(`Diğer Bilgiler`, `**Kitaplık:** discord.js\n**Discord.js Sürümü:** 11.3.2\n**NodeJS Sürümü:** 10.15.3`, true)
         .setTimestamp()
-        .setFooter(`Maruu v0.1.1`, client.user.avatarURL);
+        .setFooter(`Maruu v0.1.2`, client.user.avatarURL);
     message.channel.send(bilgi);
   }
 
