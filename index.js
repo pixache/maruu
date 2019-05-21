@@ -82,18 +82,17 @@ client.on("message", async message => {
     let hours = Math.floor(totalSeconds / 3600);
     totalSeconds %= 3600;
     let minutes = Math.floor(totalSeconds / 60);
-    let seconds = Math.floor(totalSeconds % 60);
-    let uptime = `${hours} saat, ${minutes} dakika ${seconds} saniye`;
+-    let uptime = `${hours} saat, ${minutes} dakika`;
 
     let bilgi = new Discord.RichEmbed()
         .setColor(config.mavi)
         .setTitle("Maruu > Bilgiler")
         .addField(`Destek`, `**Bot Kodlayıcısı:** Xuance#1586\n**Destek Sunucusu:** [Katılmak için tıkla](https://discord.gg/NBA8wYT)`, true)
         .addField(`Bot Durumu`, `**Gecikme:** ${client.ping}\n**Online süresi:** ${uptime}`, true)
-        .addField(`Sunucu Bilgileri`, `**Sunucular:** ${client.guilds.size}\n**Kanallar:** ${client.users.size}\n**Kullanıcılar:** ${client.channels.size}`, true)
-        .addField(`Diğer Bilgiler`, `**Kitaplık:** discord.js\n**Discord.js Sürümü:** 11.3.2\n**NodeJS Sürümü:** 10.5.0`, true)
+        .addField(`Sunucu Bilgileri`, `**Sunucular:** ${client.guilds.size}\n**Kanallar:** ${client.channels.size}\n**Kullanıcılar:** ${client.users.size - 1}`, true)
+        .addField(`Diğer Bilgiler`, `**Kitaplık:** discord.js\n**Discord.js Sürümü:** 11.3.2\n**NodeJS Sürümü:** 10.15.3`, true)
         .setTimestamp()
-        .setFooter(`Maruu v0.1`, client.user.avatarURL);
+        .setFooter(`Maruu v0.1.1`, client.user.avatarURL);
     message.channel.send(bilgi);
   }
 
