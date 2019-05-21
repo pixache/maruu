@@ -55,7 +55,7 @@ client.on("message", async message => {
 
   if(command === "ban") {
     let denied = new Discord.RichEmbed().setColor(config.kirmizi).setTitle(`${message.author.tag}`).setDescription(":x: Bu komutu kullanamazsın!");
-    if(!message.member.hasPermission(["KICK_MEMBERS", "BAN_MEMBERS"])) return message.channel.send(denied);
+    if(!message.member.hasPermission(["KICK_MEMBERS", "BAN_MEMBERS"])) return message.channel.send(denied);//
 
     let member = message.mentions.members.first();
     if(!member) return message.channel.send("Lütfen bu sunucunun bir üyesini belirtin.");
