@@ -7,10 +7,12 @@ client.on("ready", () => {
   client.user.setActivity(`m!yardım`);
 });
 
+/*
 client.on("guildCreate", message => {
     let wlc = new Discord.RichEmbed().setColor(config.yesil).setTitle("Merhabalar!").setDescription(`:wave: Sunucuya beni davet ettiğiniz için teşekkürler!\nm!yardım yazarak yardım alabilirsiniz!`).setTimestamp();
     let channel = message.guild.channels.find("name", "general");
 });
+*/
 
 client.on("guildMemberAdd", message => {
     let wlc = new Discord.RichEmbed().setColor(config.yesil).setTitle("Hoş Geldin!").setDescription(`:wave: **${message.user.username}** sunucuya katıldı!\n:crown: **${message.guild.name}** sunucusuna hoşgeldin!`).setTimestamp();
@@ -178,5 +180,4 @@ client.on("message", async message => {
     message.channel.send(yardim);
   }
 });
-
 client.login(process.env.BOT_TOKEN);
