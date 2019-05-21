@@ -6,7 +6,7 @@
     "at" : ":small_blue_diamond: **m!at <üye> [<sebep>]** Üyeyi atar.",
     "ban" : ":small_blue_diamond: **m!ban <üye> [<sebep>]** Maruu hakkında bilgi verir.",
     "bilgi" : ":small_blue_diamond: **m!bilgi** Maruu hakkında bilgi verir.",
-    "davet" : ":small_blue_diamond **m!davet** Beni sunucunuza davet edin!",
+    "davet" : ":small_blue_diamond: **m!davet** Beni sunucunuza davet edin!",
     "destek" : ":small_blue_diamond: **m!destek** Maruu ile ilgili yardım mı lazım?",
     "ping" : ":small_blue_diamond: **m!ping** Pinginizi ölçer.",
     "rolal" : ":small_blue_diamond: **m!rolal <üye> <rol>** Üyeden rol alır.",
