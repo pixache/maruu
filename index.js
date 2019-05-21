@@ -6,7 +6,7 @@ const sunucular = require("./sunucular.json");
 client.on("ready", () => {
   console.log("https://discordapp.com/oauth2/authorize?client_id=577503350451339285&scope=bot&permissions=8");
   client.user.setActivity(`m!yardım`);
-  if(!sunucular.(client.guilds.id)) {
+  if(!sunucular.[client.guilds.id]) {
     let sunucular.(client.guilds.id).isim = client.guilds.name;
     let sunucular.(client.guilds.id).sayi = 0;
     if(client.guilds.channels.find("name" === "sayi-sayma")) return;
