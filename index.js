@@ -86,7 +86,7 @@ client.on("message", async message => {
     totalSeconds %= 3600;
     let minutes = Math.floor(totalSeconds / 60);
     let seconds = Math.floor(totalSeconds % 60);
-    let uptime = `${hours} saat, ${minutes} dakika ${seconds} saniye`;
+    let uptime = `${hours}sa ${minutes}dk`;
 
     let bilgi = new Discord.RichEmbed()
         .setColor(config.mavi)
