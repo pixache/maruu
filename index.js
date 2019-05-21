@@ -7,27 +7,24 @@ client.on("ready", () => {
   client.user.setActivity(`m!yardım`);
 });
 
-client.on("guildCreate", guild => {
-    let channel = guild.channels.find(name => name.contains === "general" || "welcome");
+client.on("guildCreate", message => {
     let wlc = new Discord.RichEmbed().setColor(config.yesil).setTitle("Merhabalar!").setDescription(`:wave: Sunucuya beni davet ettiğiniz için teşekkürler!\nm!yardım yazarak yardım alabilirsiniz!`).setTimestamp();
-    channel.send(wlc);
+    let channel = message.guild.channels.find("name", "general");
 });
 
-client.on("guildMemberAdd", (guild, member) => {
-    let channel = guild.channels.find(name => name.contains === "general" || "welcome");
-    let wlc = new Discord.RichEmbed().setColor(config.yesil).setTitle("Hoş Geldin!").setDescription(`:wave: **${member.tag}** sunucuya katıldı!\n**${guild.name}** sunucusuna hoşgeldin!`).setTimestamp();
-    channel.send(wlc);
+client.on("guildMemberAdd", message => {
+    let wlc = new Discord.RichEmbed().setColor(config.yesil).setTitle("Hoş Geldin!").setDescription(`:wave: **${message.user.username}** sunucuya katıldı!\n:crown: **${message.guild.name}** sunucusuna hoşgeldin!`).setTimestamp();
+    let channel = message.guild.channels.find("name", "general").send(wlc);
 });
 
-client.on("guildMemberRemove", member => {
-    let channel = guild.channels.find(name => name.contains === "general" || "welcome");
-    let wlc = new Discord.RichEmbed().setColor(config.kirmizi).setTitle("Güle güle!").setDescription(`:wave: **${member.tag}** sunucudan ayrıldı!\nUmarız tekrar geri göndersin!`).setTimestamp();
-    channel.send(wlc);
+client.on("guildMemberRemove", message => {
+    let wlc = new Discord.RichEmbed().setColor(config.kirmizi).setTitle("Güle güle!").setDescription(`:wave: **${message.user.username}** sunucudan ayrıldı!\nUmarız tekrar geri göndersin!`).setTimestamp();
+    let channel = message.guild.channels.find("name", "general").send(wlc);
 });
 
 client.on("message", async message => {
   if(message.author.bot) return;
-  if(message.content.indexOf(config.prefix) !== 0) return;
+  if(message.content.indexOf("z!") !== 0) return;
   const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
   const command = args.shift().toLowerCase();
 
@@ -36,44 +33,44 @@ client.on("message", async message => {
     if(!message.member.hasPermission("KICK_MEMBERS") )
       return message.channel.send(denied);
 
-   let uye = message.mentions.members.first() || message.guild.members.get(args[0]);
-    if(!uye) return message.channel.send("Lütfen geçerli bir üye girin.");
-    if(!uye.kickable) return message.channel.send("Bu kullanıcıyı atamam.");
+   let member = message.mentions.members.first() || message.guild.members.get(args[0]);
+    if(!member) return message.channel.send("Lütfen geçerli bir üye girin.");
+    if(!member.kickable) return message.channel.send("Bu kullanıcıyı atamam.");
 
     let reason = args.slice(1).join(" ");
     if(!reason) reason = "Sebep belirtilmedi.";
 
-    await uye.kick(reason)
+    await member.kick(reason)
       .catch(error => message.channel.send(`Üzgünüm ${message.author} atılamaz: ${error}`));
 
     let kicked = new Discord.RichEmbed()
       .setColor(config.kirmizi)
       .setTitle("Kullanıcı Atıldı")
-      .addField(`Atılan:`, `${uye.user.tag}`)
+      .addField(`Atılan:`, `${member.user.tag}`)
       .addField(`Atan:`, `${message.author.tag}`)
       .addField(`Sebep:`, `${reason}`)
       .setTimestamp();
-    message.channel.send(kicked);
+    message.channel.send(kicked).catch(err => console.log(err));
   }
 
   if(command === "ban") {
     let denied = new Discord.RichEmbed().setColor(config.kirmizi).setTitle(`${message.author.tag}`).setDescription(":x: Bu komutu kullanamazsın!");
     if(!message.member.hasPermission(["KICK_MEMBERS", "BAN_MEMBERS"])) return message.channel.send(denied);
 
-    let uye = message.mentions.members.first();
-    if(!uye) return message.channel.send("Lütfen bu sunucunun bir üyesini belirtin.");
-    if(!uye.bannable) return message.channel.send("Bu kullanıcı atılamaz.");
+    let member = message.mentions.members.first();
+    if(!member) return message.channel.send("Lütfen bu sunucunun bir üyesini belirtin.");
+    if(!member.bannable) return message.channel.send("Bu kullanıcı atılamaz.");
 
     let reason = args.slice(1).join(" ");
     if(!reason) reason = "Sebep belirtilmedi.";
 
-    await uye.ban(reason)
+    await member.ban(reason)
       .catch(error => message.channel.send(`Üzgünüm, ${message.author} yasaklanamaz: ${error}`));
 
     let banned = new Discord.RichEmbed()
       .setColor(config.kirmizi)
       .setTitle("Kullanıcı Yasaklandı")
-      .addField(`Yasaklanan:`, `${uye.user.tag}`)
+      .addField(`Yasaklanan:`, `${member.user.tag}`)
       .addField(`Yasaklayan:`, `${message.author.tag}`)
       .addField(`Sebep:`, `${reason}`)
       .setTimestamp();
@@ -86,7 +83,7 @@ client.on("message", async message => {
     totalSeconds %= 3600;
     let minutes = Math.floor(totalSeconds / 60);
     let seconds = Math.floor(totalSeconds % 60);
-    let uptime = `${hours} saat ${minutes} dakika`;
+    let uptime = `${hours} saat, ${minutes} dakika ${seconds} saniye`;
 
     let bilgi = new Discord.RichEmbed()
         .setColor(config.mavi)
@@ -94,7 +91,7 @@ client.on("message", async message => {
         .addField(`Destek`, `**Bot Kodlayıcısı:** Xuance#1586\n**Destek Sunucusu:** [Katılmak için tıkla](https://discord.gg/NBA8wYT)`, true)
         .addField(`Bot Durumu`, `**Gecikme:** ${client.ping}\n**Online süresi:** ${uptime}`, true)
         .addField(`Sunucu Bilgileri`, `**Sunucular:** ${client.guilds.size}\n**Kanallar:** ${client.users.size}\n**Kullanıcılar:** ${client.channels.size}`, true)
-        .addField(`Diğer Bilgiler`, `**Kitaplık:** discord.js\n**Discord.js Sürümü:** 11.3.2\n**NodeJS Sürümü:** 10.15.3`, true)
+        .addField(`Diğer Bilgiler`, `**Kitaplık:** discord.js\n**Discord.js Sürümü:** 11.3.2\n**NodeJS Sürümü:** 10.5.0`, true)
         .setTimestamp()
         .setFooter(`Maruu v0.1`, client.user.avatarURL);
     message.channel.send(bilgi);
