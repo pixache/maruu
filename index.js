@@ -167,7 +167,7 @@ client.on("message", async message => {
         .setColor(config.mavi)
         .setTitle("Maruu > Yardım")
         .setThumbnail(client.user.avatarURL)
-        .setDescription(`${config.at}\n${config.ban}\n${config.bilgi}\n${config.davet}\n${config.ping}\n${config.rolal}\n${config.rolver}\n${config.sil}\n${config.soyle}`)
+        .setDescription(`${config.at}\n${config.ban}\n${config.bilgi}\n${config.davet}\n${config.destek}\n${config.ping}\n${config.rolal}\n${config.rolver}\n${config.sil}\n${config.soyle}`)
         .setTimestamp()
     message.channel.send(yardim);
   }
