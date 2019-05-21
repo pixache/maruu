@@ -36,20 +36,20 @@ client.on("message", async message => {
     if(!message.member.hasPermission("KICK_MEMBERS") )
       return message.channel.send(denied);
 
-   let member = message.mentions.members.first() || message.guild.members.get(args[0]);
-    if(!member) return message.channel.send("Lütfen geçerli bir üye girin.");
-    if(!member.kickable) return message.channel.send("Bu kullanıcıyı atamam.");
+   let uye = message.mentions.members.first() || message.guild.members.get(args[0]);
+    if(!uye) return message.channel.send("Lütfen geçerli bir üye girin.");
+    if(!uye.kickable) return message.channel.send("Bu kullanıcıyı atamam.");
 
     let reason = args.slice(1).join(" ");
     if(!reason) reason = "Sebep belirtilmedi.";
 
-    await member.kick(reason)
+    await uye.kick(reason)
       .catch(error => message.channel.send(`Üzgünüm ${message.author} atılamaz: ${error}`));
 
     let kicked = new Discord.RichEmbed()
       .setColor(config.kirmizi)
       .setTitle("Kullanıcı Atıldı")
-      .addField(`Atılan:`, `${member.user.tag}`)
+      .addField(`Atılan:`, `${uye.user.tag}`)
       .addField(`Atan:`, `${message.author.tag}`)
       .addField(`Sebep:`, `${reason}`)
       .setTimestamp();
@@ -60,20 +60,20 @@ client.on("message", async message => {
     let denied = new Discord.RichEmbed().setColor(config.kirmizi).setTitle(`${message.author.tag}`).setDescription(":x: Bu komutu kullanamazsın!");
     if(!message.member.hasPermission(["KICK_MEMBERS", "BAN_MEMBERS"])) return message.channel.send(denied);
 
-    let member = message.mentions.members.first();
-    if(!member) return message.channel.send("Lütfen bu sunucunun bir üyesini belirtin.");
-    if(!member.bannable) return message.channel.send("Bu kullanıcı atılamaz.");
+    let uye = message.mentions.members.first();
+    if(!uye) return message.channel.send("Lütfen bu sunucunun bir üyesini belirtin.");
+    if(!uye.bannable) return message.channel.send("Bu kullanıcı atılamaz.");
 
     let reason = args.slice(1).join(" ");
     if(!reason) reason = "Sebep belirtilmedi.";
 
-    await member.ban(reason)
+    await uye.ban(reason)
       .catch(error => message.channel.send(`Üzgünüm, ${message.author} yasaklanamaz: ${error}`));
 
     let banned = new Discord.RichEmbed()
       .setColor(config.kirmizi)
       .setTitle("Kullanıcı Yasaklandı")
-      .addField(`Yasaklanan:`, `${member.user.tag}`)
+      .addField(`Yasaklanan:`, `${uye.user.tag}`)
       .addField(`Yasaklayan:`, `${message.author.tag}`)
       .addField(`Sebep:`, `${reason}`)
       .setTimestamp();
@@ -86,7 +86,7 @@ client.on("message", async message => {
     totalSeconds %= 3600;
     let minutes = Math.floor(totalSeconds / 60);
     let seconds = Math.floor(totalSeconds % 60);
-    let uptime = `${hours}sa ${minutes}dk`;
+    let uptime = `${hours} saat ${minutes} dakika`;
 
     let bilgi = new Discord.RichEmbed()
         .setColor(config.mavi)
@@ -94,7 +94,7 @@ client.on("message", async message => {
         .addField(`Destek`, `**Bot Kodlayıcısı:** Xuance#1586\n**Destek Sunucusu:** [Katılmak için tıkla](https://discord.gg/NBA8wYT)`, true)
         .addField(`Bot Durumu`, `**Gecikme:** ${client.ping}\n**Online süresi:** ${uptime}`, true)
         .addField(`Sunucu Bilgileri`, `**Sunucular:** ${client.guilds.size}\n**Kanallar:** ${client.users.size}\n**Kullanıcılar:** ${client.channels.size}`, true)
-        .addField(`Diğer Bilgiler`, `**Kitaplık:** discord.js\n**Discord.js Sürümü:** 11.3.2\n**NodeJS Sürümü:** 10.5.0`, true)
+        .addField(`Diğer Bilgiler`, `**Kitaplık:** discord.js\n**Discord.js Sürümü:** 11.3.2\n**NodeJS Sürümü:** 10.15.3`, true)
         .setTimestamp()
         .setFooter(`Maruu v0.1`, client.user.avatarURL);
     message.channel.send(bilgi);
