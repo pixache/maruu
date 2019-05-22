@@ -10,8 +10,7 @@ module.exports.run = async(client, message, args) => {
     let hours = Math.floor(totalSeconds / 3600);
     totalSeconds %= 3600;
     let minutes = Math.floor(totalSeconds / 60);
-    let seconds = Math.floor(totalSeconds % 60);
-    let uptime = `${hours} saat, ${minutes} dakika ${seconds} saniye`;
+    let uptime = `${hours} saat ${minutes} dakika`;
 
     let bilgi = new Discord.RichEmbed()
         .setColor(config.mavi)
