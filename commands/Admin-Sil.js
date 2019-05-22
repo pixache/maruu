@@ -8,8 +8,6 @@ module.exports.run = async(client, message, args) => {
     let fetched = await message.channel.fetchMessages({limit: deleteCount});
     message.channel.bulkDelete(fetched)
       .catch(error => message.channel.send(`:no_entry: **Hata:** Mesajlar silinemedi: ${error}`));
-
-    message.channel.send(`:white_check_mark: Senin için ${deleteCount} mesaj sildim!`);
 }
 
 module.exports.help = {
