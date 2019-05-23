@@ -24,8 +24,10 @@ client.on("ready", () => {
 });
 
 client.on("guildMemberAdd", message => {
-    let wlc = new Discord.RichEmbed().setColor(config.yesil).setTitle("Hoş Geldin!").setDescription(`:wave: **${message.user.username}** sunucuya katıldı!\n:crown: **${message.guild.name}** sunucusuna hoşgeldin!`).setTimestamp();
-    let channel = message.guild.channels.find("name", "general").send(wlc);
+    if(message.guild.id !== '264445053596991498') {
+      let wlc = new Discord.RichEmbed().setColor(config.yesil).setTitle("Hoş Geldin!").setDescription(`:wave: **${message.user.username}** sunucuya katıldı!\n:crown: **${message.guild.name}** sunucusuna hoşgeldin!`).setTimestamp();
+      let channel = message.guild.channels.find("name", "general").send(wlc);
+    }
 });
 
 client.on("guildMemberRemove", message => {
