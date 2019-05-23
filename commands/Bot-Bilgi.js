@@ -1,3 +1,5 @@
+// Son güncelleme: 0.2.1.2 (23 Mayıs)
+
 const Discord = require("discord.js");
 const config = require("../config.json");
 

@@ -1,3 +1,5 @@
+// Son güncelleme: 0.2.1.2 (23 Mayıs)
+
 const Discord = require("discord.js");
 const config = require("../config.json");
 
@@ -14,8 +16,8 @@ module.exports.run = async(client, message, args) => {
     if(!message.member.hasPermission("KICK_MEMBERS") )
       return fastembed(config.kirmizi, "Hata", ":no_entry: Gereken yetkiye sahip değilsin.", message);
 
-   let member = message.mentions.members.first() || message.guild.members.get(args[0]);
-    if(!member) return fastembed(config.kirmizi, "Hata", ":no_entry: Bir kullanıcı belirtin.", message);
+   let member = message.mentions.members.first();
+    if(!member) return fastembed(config.kirmizi, "Hata", ":no_entry: Bir kullanıcı etiketleyin.", message);
     if(!member.bannable) return fastembed(config.kirmizi, "Hata", ":no_entry: Bu kullanıcı yasaklanamaz.", message);
 
     let reason = args.slice(1).join(" ");
