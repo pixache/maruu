@@ -1,10 +1,11 @@
-{ 
+{
+    "token"  : "NTc3NTAzMzUwNDUxMzM5Mjg1.XNmBaw.xHFAls_c1KND7ZuSgleS9_BSebI",
     "prefix" : "m!",
     "mavi" : "#0099ff",
     "yesil" : "#19ff00",
     "kirmizi" : "#ff0000",
     "at" : ":small_blue_diamond: **m!at üye sebep** Üyeyi atar.",
-    "ban" : ":small_blue_diamond: **m!ban üye sebep** Üyeyi yasaklar",
+    "ban" : ":small_blue_diamond: **m!ban üye sebep** Maruu hakkında bilgi verir.",
     "bilgi" : ":small_blue_diamond: **m!bilgi** Maruu hakkında bilgi verir.",
     "davet" : ":small_blue_diamond: **m!davet** Beni sunucunuza davet edin!",
     "destek" : ":small_blue_diamond: **m!destek** Maruu ile ilgili yardım mı lazım?",
@@ -12,5 +13,7 @@
     "rolal" : ":small_blue_diamond: **m!rolal üye rol** Üyeden rol alır.",
     "rolver" : ":small_blue_diamond: **m!rolver üye rol** Üyeye rol verir.",
     "sil" : ":small_blue_diamond: **m!sil sayı** Belirtilen sayıda mesaj siler.",
-    "soyle" : ":small_blue_diamond: **m!söyle** Verilen mesajı söyler."
+    "sunucu" : ":small_blue_diamond: **m!sunucu** Sunucu bilgilerini verir.",
+    "soyle" : ":small_blue_diamond: **m!söyle** Verilen mesajı söyler.",
+    "zar" : ":small_blue_diamond: **m!zar** Bir zar sallarsınız."
 }
