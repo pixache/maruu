@@ -16,16 +16,16 @@ module.exports.run = async(client, message, args) => {
     let rol = args.slice(1).join(" ");
     let guildrole = message.guild.roles.find(role => role.name === `${rol}`);
 
-    if(!message.member.hasPermission("MANAGE_ROLES")) {
-      fastembed(config.kirmizi, "Hata", ":no_entry: Gereken yetkiye sahip değilsin.", message)
-    }else{
-      if(!member) return fastembed(config.kirmizi, "Hata", `Lütfen sunucunun bir üyesini belirtin.`, message)
-      if(!rol) return fastembed(config.kirmizi, "Hata", `Lütfen vereceğiniz rolü belirtin.`, message)
-      if(!guildrole) return fastembed(config.kirmizi, "Hata", `${rol} adında bir rol bulunamadı.`, message)
-      if(!member.roles.find(role => role.name === `${rol}`)) return fastembed(config.kirmizi, "Hata", `**${member.user.username}**, **${rol}** rolüne zaten sahip.`, message)
+    if(message.member.hasPermission("MANAGE_ROLES")) {
+      if(!member) return fastembed(config.kirmizi, "Hata", `Lütfen sunucunun bir üyesini belirtin.`, message);
+      if(!rol) return fastembed(config.kirmizi, "Hata", `Lütfen vereceğiniz rolü belirtin.`, message);
+      if(!guildrole) return fastembed(config.kirmizi, "Hata", `${rol} adında bir rol bulunamadı.`, message);
+      if(!member.roles.find(role => role.name === `${rol}`)) return fastembed(config.kirmizi, "Hata", `**${member.user.username}**, **${rol}** rolüne zaten sahip.`, message);
 
       member.addRole(guildrole).catch(console.error);
       fastembed(config.yesil, "Rol Verildi", `Rol Verildi: ${member}\nVerilen Rol: ${rol}\nRolü Veren: ${message.author.username}`, message);
+    }if(!message.member.hasPermission("MANAGE_ROLES")){
+    	fastembed(config.kirmizi, "Hata", ":no_entry: Bu komutu kullanamazsınız.");
     }
 }
 
