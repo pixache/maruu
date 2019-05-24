@@ -1,8 +1,9 @@
+// Son güncelleme: 0.2.1.4 (24 Mayıs)
+
 const Discord = require("discord.js");
 const config = require("../config.json");
 
 module.exports.run = async(client, message, args) => {
-	if(message.channel.type !== "dm") {
 		let embed = new Discord.RichEmbed()
 			.setColor(config.mavi)
 			.setTitle(`${message.guild.name} Bilgileri`)
@@ -12,11 +13,8 @@ module.exports.run = async(client, message, args) => {
 			.setTimestamp()
 			.setFooter("Daha detaylı bilgiler eklenecek.");
 		message.channel.send(embed);
-	}else {
-		message.channel.send("Bu komut sadece sunucu içinde kullanılabilir.");
 	}
-}
 
 module.exports.help = {
-  name: 'sunucu'
+  name: 'sunucubilgi'
 }
