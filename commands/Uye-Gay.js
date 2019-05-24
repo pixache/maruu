@@ -10,9 +10,9 @@ function fastembed(color, title, desc, message) {
 }
 
 module.exports.run = async(client, message, args) => {
-    let uye = message.mentions.members.first() || message.author;
+    let uye = message.mentions.members.first().username || message.author.username;
     let oran = Math.floor(Math.random() * 100 + 1);
-    message.channel.send(fastembed(config.mavi, "Gay ölçer", `${uye.username} **${oran}%** gay.`));
+    message.channel.send(fastembed(config.mavi, "Gay ölçer", `${uye} **${oran}%** gay.`));
 }
 
 module.exports.help = {
