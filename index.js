@@ -41,7 +41,6 @@ client.on("message", async message => {
   if(message.author.bot) return;
   if(message.content.indexOf(config.prefix) !== 0) return;
   if(message.channel.type === "dm") return;
-  if(message.guild.id === '264445053596991498') return;
 
   let prefix = config.prefix;
   let messageArray = message.content.split(" ");
