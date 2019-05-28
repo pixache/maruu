@@ -13,7 +13,7 @@ module.exports.run = async(client, message, args) => {
             embed.addField(`${list[i].name}`, `**Üye:** ${list[i].members.size}\n**Kanal:** ${list[i].channels.size}`);
         }
     
-        message.channel.send(embed);
+        message.author.send(embed);
     }else {
         return;
     }
