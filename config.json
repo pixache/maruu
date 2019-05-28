@@ -17,8 +17,9 @@
 
     "ping" : ":small_blue_diamond: **m!ping** Pinginizi ölçer.",
     "soyle" : ":small_blue_diamond: **m!söyle** Verilen mesajı söyler.",
+    "yazitura" : ":small_blue_diamond: **m!yazıtura** Hangisi gelecek?",
     "zar" : ":small_blue_diamond: **m!zar** Bir zar sallarsınız.",
 
-    "sunucubilgi" : ":small_blue_diamond: **m!sunucubilgi** Sunucu bilgilerini verir.",
-    "sunucuikon" : ":small_blue_diamond: **m!sunucuikon** Sunucu ikonunu gösterir."
+    "sunucubilgi" : ":small_blue_diamond: **m!sunucu bilgi** Sunucu bilgilerini verir.",
+    "sunucuikon" : ":small_blue_diamond: **m!sunucu ikon** Sunucu ikonunu gösterir."
 }

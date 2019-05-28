@@ -4,18 +4,18 @@ const Discord = require("discord.js");
 const config = require("../config.json");
 
 module.exports.run = async(client, message, args) => {
-  let msg = await message.channel.send(":art: Sunucu ikonu yükleniyor...");
-  if(!message.guild.iconURL) return msg.edit(":x: Sunucuya ait bir ikon bulunamadı!");
+	let msg = await message.channel.send(":art: Sunucu ikonu yükleniyor...");
+	if(!message.guild.iconURL) return msg.edit(":x: Sunucuya ait bir ikon bulunamadı!");
 
-  await message.channel.send({files: [
-      {
-          attachment: message.guild.iconURL,
-          name: "cokgizli.png"
-      }
-  ]});
-  msg.delete();
+	await message.channel.send({files: [
+	{
+		attachment: message.guild.iconURL,
+		name: "cokgizli.png"
+	}
+	]});
+	msg.delete();
 }
 
 module.exports.help = {
-  name: 'sunucuikon'
+	name: 'sunucuikon'
 }
