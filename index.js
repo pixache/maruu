@@ -21,6 +21,7 @@ fs.readdir("./commands", (err, files) => {
 client.on("ready", () => {
   console.log(`${client.user.username} olarak giriş yapıldı.`);
   client.user.setActivity(`m!yardım`);
+  console.log(`Bulunduğum sunucular: ${client.guilds.name}`);
 });
 
 client.on("guildMemberAdd", message => {
