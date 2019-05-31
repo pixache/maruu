@@ -24,20 +24,24 @@ client.on("ready", () => {
 });
 
 client.on("guildMemberAdd", member => {
-	let role = member.guild.roles.find("name", "Üye");
 	if(member.guild.id === "578239812927225889") {
+		let role = member.guild.roles.find("name", "Üye");
 		member.addRole(role).catch(err => console.log(err));
 	}
 });
 
 client.on("guildMemberAdd", message => {
-	let wlc = new Discord.RichEmbed().setColor(config.yesil).setThumbnail(message.user.avatarURL).setTitle("Hoş Geldin!").setDescription(`:wave: **${message.user.username}** sunucuya katıldı!\n:crown: **${message.guild.name}** sunucusuna hoşgeldin!`).setTimestamp();
-	let channel = message.guild.channels.find("name", "hoşgeldin").send(wlc);
+	if(message.guild.channels.find("name", "hoşgeldin")) {
+		let wlc = new Discord.RichEmbed().setColor(config.yesil).setThumbnail(message.user.avatarURL).setTitle("Hoş Geldin!").setDescription(`:wave: **${message.user.username}** sunucuya katıldı!\n:crown: **${message.guild.name}** sunucusuna hoşgeldin!`).setTimestamp();
+		let channel = message.guild.channels.find("name", "hoşgeldin").send(wlc);
+	}
 });
 
 client.on("guildMemberRemove", message => {
-	let wlc = new Discord.RichEmbed().setColor(config.kirmizi).setThumbnail(message.user.avatarURL).setTitle("Güle Güle!").setDescription(`:wave: **${message.user.username}** sunucudan ayrıldı!\n:crown: Geri dönmen dileğiyle!`).setTimestamp();
-	let channel = message.guild.channels.find("name", "hoşgeldin").send(wlc);
+	if(message.guild.channels.find("name", "hoşgeldin")) {
+		let wlc = new Discord.RichEmbed().setColor(config.kirmizi).setThumbnail(message.user.avatarURL).setTitle("Güle Güle!").setDescription(`:wave: **${message.user.username}** sunucudan ayrıldı!\n:crown: Geri dönmen dileğiyle!`).setTimestamp();
+		let channel = message.guild.channels.find("name", "hoşgeldin").send(wlc);
+	}
 });
 
 client.on("message", async message => {
