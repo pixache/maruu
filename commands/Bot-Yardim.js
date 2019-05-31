@@ -17,7 +17,7 @@ module.exports.run = async(client, message, args) => {
     if(args[0] === "admin") fastembed(client.user.avatarURL, config.mavi, "Maruu > Admin Komutları", `${config.at}\n${config.ban}\n${config.rolal}\n${config.rolver}\n${config.sil}`, message);
     if(args[0] === "bot") fastembed(client.user.avatarURL, config.mavi, "Maruu > Bot Komutları", `${config.bilgi}\n${config.davet}\n${config.destek}`, message);
     if(args[0] === "sunucu") fastembed(client.user.avatarURL, config.mavi, "Maruu > Sunucu Komutları", `${config.sunucubilgi}\n${config.sunucuikon}`, message);
-    if(args[0] === "üye") fastembed(client.user.avatarURL, config.mavi, "Maruu > Üye Komutları", `${config.ping}\n${config.soyle}\n${config.uyebilgi}\n${config.yazitura}\n${config.zar}`, message);
+    if(args[0] === "üye") fastembed(client.user.avatarURL, config.mavi, "Maruu > Üye Komutları", `${config.ping}\n${config.soyle}\n${config.thanos}\n${config.uyebilgi}\n${config.yazitura}\n${config.zar}`, message);
   }
 
 module.exports.help = {
