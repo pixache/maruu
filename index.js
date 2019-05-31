@@ -3,7 +3,6 @@ const client = new Discord.Client();
 const config = require("./config.json");
 const fs = require("fs");
 client.commands = new Discord.Collection();
-
 fs.readdir("./commands", (err, files) => {
 	if(err) console.log(err);
 
@@ -12,7 +11,7 @@ fs.readdir("./commands", (err, files) => {
 
 	jsfile.forEach((f, i) => {
 		let props = require(`./commands/${f}`);
-		console.log(`[${i}]: ${f}`);
+		console.log(`[KOMUT: ${i + 1}] > ${f}`);
 
 		client.commands.set(props.help.name, props);
 		i = i+1;
@@ -21,18 +20,25 @@ fs.readdir("./commands", (err, files) => {
 
 client.on("ready", () => {
 	console.log(`${client.user.username} olarak giriş yapıldı.`);
-	client.user.setActivity(`m!yardım`);
+	client.user.setActivity(` ${config.prefix}yardım | ${client.guilds.size} sunucu`, {type: 'LISTENING'});
 });
 
-/*client.on("guildMemberAdd", message => {
-	let wlc = new Discord.RichEmbed().setColor(config.yesil).setTitle("Hoş Geldin!").setDescription(`:wave: **${message.user.username}** sunucuya katıldı!\n:crown: **${message.guild.name}** sunucusuna hoşgeldin!`).setTimestamp();
-	let channel = message.guild.channels.find("name", "general").send(wlc);
+client.on("guildMemberAdd", member => {
+	let role = member.guild.roles.find("name", "Üye");
+	if(member.guild.id === "578239812927225889") {
+		member.addRole(role).catch(err => console.log(err));
+	}
+});
+
+client.on("guildMemberAdd", message => {
+	let wlc = new Discord.RichEmbed().setColor(config.yesil).setThumbnail(message.user.avatarURL).setTitle("Hoş Geldin!").setDescription(`:wave: **${message.user.username}** sunucuya katıldı!\n:crown: **${message.guild.name}** sunucusuna hoşgeldin!`).setTimestamp();
+	let channel = message.guild.channels.find("name", "hoşgeldin").send(wlc);
 });
 
 client.on("guildMemberRemove", message => {
-	let wlc = new Discord.RichEmbed().setColor(config.kirmizi).setTitle("Güle güle!").setDescription(`:wave: **${message.user.username}** sunucudan ayrıldı!\nUmarız tekrar geri göndersin!`).setTimestamp();
-	let channel = message.guild.channels.find("name", "general").send(wlc);
-});*/
+	let wlc = new Discord.RichEmbed().setColor(config.kirmizi).setThumbnail(message.user.avatarURL).setTitle("Güle Güle!").setDescription(`:wave: **${message.user.username}** sunucudan ayrıldı!\n:crown: Geri dönmen dileğiyle!`).setTimestamp();
+	let channel = message.guild.channels.find("name", "hoşgeldin").send(wlc);
+});
 
 client.on("message", async message => {
 	if(message.author.bot) return;

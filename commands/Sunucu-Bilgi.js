@@ -9,7 +9,7 @@ module.exports.run = async(client, message, args) => {
 		.setTitle(`${message.guild.name} Bilgileri`)
 		.setThumbnail(message.guild.iconURL)
 		.addField(`Yönetim`, `**Kurucu:** ${message.guild.owner}\n**Oluşturuldu:** ${message.guild.createdAt}`)
-		.addField(`Topluluk`, `**Kanallar** ${message.guild.channels.size}\n**Kullanıcılar:** ${message.guild.members.size}\n**Roller:** ${message.guild.roles.size}`)
+		.addField(`Topluluk`, `**Kanallar:** ${message.guild.channels.size}\n**Kullanıcılar:** ${message.guild.members.size}\n**Roller:** ${message.guild.roles.size}`)
 		.setTimestamp()
 		.setFooter("Daha detaylı bilgiler eklenecek.");
 	message.channel.send(embed);
