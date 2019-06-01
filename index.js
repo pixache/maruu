@@ -46,6 +46,7 @@ client.on("guildMemberRemove", message => {
 });
 
 client.on("message", async message => {
+	console.log(`[${message.guild.name}] > [${message.author.tag}] : [${message.content}]`);
 	if(message.author.bot) return;
 	if(message.content.indexOf(config.prefix) !== 0) return;
 	if(message.channel.type === "dm") return;
