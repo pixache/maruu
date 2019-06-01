@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 const client = new Discord.Client();
 const config = require("./config.json");
 const fs = require("fs");
-const msgs = [];
+
 client.commands = new Discord.Collection();
 fs.readdir("./commands", (err, files) => {
 	if(err) console.log(err);
