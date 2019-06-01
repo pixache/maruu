@@ -20,7 +20,7 @@ module.exports.run = async(client, message, args) => {
 				},
 				{
 				name: ':spy: | Üye Komutları',
-				value: '`avatar`, `bilgi`, `çark`, `ping`, `söyle`, `thanos`, `yazıtura`, `zar`'
+				value: '`avatar`, `çark`, `ping`, `söyle`, `thanos`, `üyebilgi`, `yazıtura`, `zar`'
 				}
 			],
 			timestamp: new Date(),
