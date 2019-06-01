@@ -1,25 +1,36 @@
-// Son güncelleme: 0.2.1.5 (31 Mayıs)
-
-const Discord = require("discord.js");
-const config = require("../config.json");
-
-function fastembed(icon, color, title, desc, message) {
-  let embed = new Discord.RichEmbed()
-    .setColor(color)
-    .setThumbnail(icon)
-    .setTitle(title)
-    .setDescription(desc);
-  message.channel.send(embed);
-}
+const Discord = require('discord.js');
+const config = require('../config.json');
 
 module.exports.run = async(client, message, args) => {
-    if(!args[0]) return fastembed(client.user.avatarURL, config.mavi, "Maruu > Yardım", `:small_blue_diamond: **m!yardım admin** Admin komutlarını gösterir.\n:small_blue_diamond: **m!yardım bot** Bot komutlarını gösterir.\n:small_blue_diamond: **m!yardım sunucu** Sunucu komutlarını gösterir.\n:small_blue_diamond: **m!yardım üye** Üye komutlarını gösterir.`, message);
-    if(args[0] === "admin") fastembed(client.user.avatarURL, config.mavi, "Maruu > Admin Komutları", `${config.at}\n${config.ban}\n${config.rolal}\n${config.rolver}\n${config.sil}`, message);
-    if(args[0] === "bot") fastembed(client.user.avatarURL, config.mavi, "Maruu > Bot Komutları", `${config.bilgi}\n${config.davet}\n${config.destek}`, message);
-    if(args[0] === "sunucu") fastembed(client.user.avatarURL, config.mavi, "Maruu > Sunucu Komutları", `${config.sunucubilgi}\n${config.sunucuikon}`, message);
-    if(args[0] === "üye") fastembed(client.user.avatarURL, config.mavi, "Maruu > Üye Komutları", `${config.ping}\n${config.soyle}\n${config.thanos}\n${config.uyebilgi}\n${config.yazitura}\n${config.zar}`, message);
-  }
+	message.channel.send({embed: {
+	color: 3447003,
+	author: {name: 'Maruu ❯ Yardım'},
+			fields: [
+				{
+				name: ":gear: | Admin Komutları",
+				value:"`at`, `ban`, `rolal`, `rolver`, `sil`",
+				},
+				{
+				name: ':robot: | Bot Komutları',
+				value: "`bilgi`, `davet`, `destek`, `yardım`",
+				},
+				{
+				name: ':file_cabinet: | Sunucu Komutları',
+				value: '`sunucubilgi`, `sunucuikon`',
+				},
+				{
+				name: ':spy: | Üye Komutları',
+				value: '`avatar`, `bilgi`, `çark`, `ping`, `söyle`, `thanos`, `yazıtura`, `zar`'
+				}
+			],
+			timestamp: new Date(),
+			footer: {
+				icon_url: client.user.avatarURL,
+				text: `${message.author.tag} tarafından istendi.`
+			}
+		}});
+}
 
 module.exports.help = {
-  name: 'yardım'
+    name: 'yardım'
 }

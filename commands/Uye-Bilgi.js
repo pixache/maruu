@@ -1,28 +1,32 @@
-// Son güncelleme: 0.2.1.5 (31 Mayıs)
+// Son güncelleme: 0.2.1.6 (01/06)
 
 const Discord = require('discord.js');
 const config = require('../config.json');
+const moment = require('moment');
+let stlist = {
+	"online" : "Çevrimiçi",
+	"offline" : "Çevrimdışı",
+	"dnd" : "Rahatsız Etmeyin",
+	"idle" : "Müsait"
+}
 
-function fastembed(color, desc) {
-    let embed = new Discord.RichEmbed()
-      .setColor(color)
-      .setTitle(desc);
-    return embed;
-  }
-
-  
 module.exports.run = async(client, message, args) => {
-    let member = message.mentions.users.first() || message.author;
+	let member = message.mentions.users.first() || message.author;
+
+	let st = member.presence.status;
+	if(st === "dnd" || "online" || "offline" || "idle") {
+		st_dr = stlist[st]
+	}
 
     let info = new Discord.RichEmbed()
         .setColor(config.mavi)
         .setThumbnail(member.avatarURL)
-        .addField('Kullanıcı Adı', member.tag, true)
+		.addField('Kullanıcı Adı', member.tag, true)
         .addField('Kullanıcı ID', member.id, true)
-        .addField('Durumu', member.presence.status, true)
-        .addField('Ayırıcı', member.discriminator, true)
-        .addField('Sunucuya Katıldı', message.member.guild.joinedAt, true)
-        .addField("Discord'a Katıldı", member.createdAt, true);
+        .addField('Durumu', st_dr, true)
+		.addField('Ayırıcı', member.discriminator, true)
+        .addField('Sunucuya Katıldı', moment(message.member.guild.joinedAt).format('DD/MM/YYYY hh:mm:ss'), true)
+        .addField("Discord'a Katıldı", moment(member.createdAt).format('DD/MM/YYYY hh:mm:ss'), true);
 
     message.channel.send(info);
 }

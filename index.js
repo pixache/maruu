@@ -2,6 +2,7 @@ const Discord = require("discord.js");
 const client = new Discord.Client();
 const config = require("./config.json");
 const fs = require("fs");
+const msgs = [];
 client.commands = new Discord.Collection();
 fs.readdir("./commands", (err, files) => {
 	if(err) console.log(err);
@@ -24,8 +25,8 @@ client.on("ready", () => {
 });
 
 client.on("guildMemberAdd", member => {
+	let role = member.guild.roles.find("name", "Üye");
 	if(member.guild.id === "578239812927225889") {
-		let role = member.guild.roles.find(y => y.name === "Üye");
 		member.addRole(role).catch(err => console.log(err));
 	}
 });

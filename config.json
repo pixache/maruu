@@ -1,30 +1,6 @@
 {
     "prefix" : "m!",
-
     "mavi" : "#0099ff",
     "yesil" : "#19ff00",
-    "kirmizi" : "#ff0000",
-
-    "at" : ":small_blue_diamond: **m!at üye sebep** Üyeyi atar.",
-    "ban" : ":small_blue_diamond: **m!ban üye sebep** Üyeyi yasaklar.",
-    "rolal" : ":small_blue_diamond: **m!rolal üye rol** Üyeden rol alır.",
-    "rolver" : ":small_blue_diamond: **m!rolver üye rol** Üyeye rol verir.",
-    "sil" : ":small_blue_diamond: **m!sil sayı** Belirtilen sayıda mesaj siler.",
-
-    "bilgi" : ":small_blue_diamond: **m!bilgi** Maruu hakkında bilgi verir.",
-    "davet" : ":small_blue_diamond: **m!davet** Maruu'yu sunucunuza ekler.",
-    "destek" : ":small_blue_diamond: **m!destek** Destek mi lazım?",
-
-    "ping" : ":small_blue_diamond: **m!ping** Pinginizi ölçer.",
-    "soyle" : ":small_blue_diamond: **m!söyle** Verilen mesajı söyler.",
-    "thanos" : ":small_blue_diamond: **m!thanos** Parmak şıklatmada size ne oldu?",
-    "uyebilgi" : ":small_blue_diamond: **m!üyebilgi üye** Üyenin bilgilerini gösterir.",
-    "yazitura" : ":small_blue_diamond: **m!yazıtura** Hangisi gelecek?",
-    "zar" : ":small_blue_diamond: **m!zar** Bir zar sallarsınız.",
-
-    "sunucubilgi" : ":small_blue_diamond: **m!sunucu bilgi** Sunucu bilgilerini verir.",
-    "sunucuikon" : ":small_blue_diamond: **m!sunucu ikon** Sunucu ikonunu gösterir.",
-
-    "thanos1" :  "Hepsi bir damla kan için miydi?",
-    "thanos2" : ""
+    "kirmizi" : "#ff0000"
 }
