@@ -25,7 +25,7 @@ client.on("ready", () => {
 });
 
 client.on("guildMemberAdd", member => {
-	let role = member.guild.roles.find("name", "Üye");
+	let role = member.guild.roles.find(y => y.name === "Üye");
 	if(member.guild.id === "578239812927225889") {
 		member.addRole(role).catch(err => console.log(err));
 	}
