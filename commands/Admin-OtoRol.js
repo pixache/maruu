@@ -13,6 +13,17 @@ function fastembed(color, desc) {
 }
 
 module.exports.run = async(client, message, args) => {
+    let guild = message.guild;
+    if(!guildConf[guild.id]) {
+        guildConf[guild.id] = {
+            name: guild.name,
+            welcomeChannel: 'hoşgeldin',
+            welcomeRole: 'Üye'
+        }
+        fs.writeFile('../storages/guildConf.json', JSON.stringify(guildConf, null, 2), (err) => {
+            if(err) console.log(err)
+        });
+    }
     if(message.member.hasPermission('ADMINISTRATOR')) {
         if(!args[0]) return message.channel.send(fastembed(config.kirmizi, "Otomatik verilecek rolü belirtin."));
         if(message.guild.roles.find(x => x.name === args[0])) {

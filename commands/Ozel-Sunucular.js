@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-const config = require('../config.json');
+const config = require('../storages/config.json');
 
 module.exports.run = async(client, message, args) => {
     if(message.author.id === "361059389731373066") {
