@@ -1,8 +1,8 @@
 // Son güncelleme: 0.2.1.7 (03/06)
 
 const Discord = require("discord.js");
-const config = require("../storages/config.json");
-const guildConf = require("../storages/guildConf.json");
+const config = require("./storages/config.json");
+const guildConf = require("./storages/guildConf.json");
 const fs = require('fs');
 
 function fastembed(color, desc) {
@@ -20,13 +20,14 @@ module.exports.run = async(client, message, args) => {
             welcomeChannel: 'hoşgeldin',
             welcomeRole: 'Üye'
         }
-        fs.writeFile('../storages/guildConf.json', JSON.stringify(guildConf, null, 2), (err) => {
+        fs.writeFile('./storages/guildConf.json', JSON.stringify(guildConf, null, 2), (err) => {
             if(err) console.log(err)
         });
     }
     if(message.member.hasPermission('ADMINISTRATOR')) {
         if(!args[0]) return message.channel.send(fastembed(config.kirmizi, "Otomatik verilecek rolü belirtin."));
         if(message.guild.roles.find(x => x.name === args[0])) {
+            if(args[0] === guildConf[message.guild.id].welcomeRole) return message.channel.send(fastembed(config.kirmizi, "Girdiğiniz rol zaten şuan verilen rol."));
             guildConf[message.guild.id].welcomeRole = args[0];
             message.channel.send(fastembed(config.yesil, ":white_check_mark: | Oto-rol **" + args[0] + "** olarak değiştirildi."));
             fs.writeFile('../Maruu/storages/guildConf.json', JSON.stringify(guildConf, null, 2), (err) => {if(err) console.log(err)});

@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
-const config = require('../storages/config.json');
-const guildConf = require('../storages/guildConf.json');
+const config = require('./storages/config.json');
+const guildConf = require('./storages/guildConf.json');
 const fs = require('fs');
 
 module.exports.run = async(client, message, args) => {
@@ -11,7 +11,7 @@ module.exports.run = async(client, message, args) => {
             welcomeChannel: 'hoşgeldin',
             welcomeRole: 'Üye'
         }
-        fs.writeFile('../storages/guildConf.json', JSON.stringify(guildConf, null, 2), (err) => {
+        fs.writeFile('./storages/guildConf.json', JSON.stringify(guildConf, null, 2), (err) => {
             if(err) console.log(err)
         });
     }
