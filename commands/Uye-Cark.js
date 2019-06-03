@@ -1,4 +1,5 @@
-const config = require('../config.json');
+const Discord = require('discord.js');
+const config = require('../storages/config.json');
 
 module.exports.run = async(client, message, args) => {
     let spinning = await message.channel.send({

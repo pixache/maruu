@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-const config = require('../config.json');
+const config = require('../storages/config.json');
 
 function fastembed(color, desc) {
   let embed = new Discord.RichEmbed()

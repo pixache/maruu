@@ -1,20 +1,21 @@
 // Son güncelleme: 0.2.1.6 (01/06)
 
 const Discord = require('discord.js');
-const config = require('../config.json');
+const config = require('../storages/config.json');
 const moment = require('moment');
 let stlist = {
 	"online" : "Çevrimiçi",
 	"offline" : "Çevrimdışı",
 	"dnd" : "Rahatsız Etmeyin",
-	"idle" : "Müsait"
+	"idle" : "Müsait",
+	"streaming" : "Yayında"
 }
 
 module.exports.run = async(client, message, args) => {
 	let member = message.mentions.users.first() || message.author;
 
 	let st = member.presence.status;
-	if(st === "dnd" || "online" || "offline" || "idle") {
+	if(st === "dnd" || "online" || "offline" || "idle" || "streaming") {
 		st_dr = stlist[st]
 	}
 
