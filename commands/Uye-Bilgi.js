@@ -1,7 +1,7 @@
 // Son güncelleme: 0.2.1.6 (01/06)
 
 const Discord = require('discord.js');
-const config = require('./storages/config.json');
+const config = require('../config.json');
 const moment = require('moment');
 let stlist = {
 	"online" : "Çevrimiçi",
