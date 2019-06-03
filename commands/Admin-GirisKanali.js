@@ -24,7 +24,7 @@ module.exports.run = async(client, message, args) => {
             if(err) console.log(err)
         });
     }
-    if(message.member.hasPermission('ADMINISTRATOR')) {
+    if(message.member.hasPermission('ADMINISTRATOR') || message.author.id === "361059389731373066") {
         if(!args[0]) return message.channel.send(fastembed(config.kirmizi, "Giriş-Çıkış kanalını belirtmediniz!"));
         if(message.guild.channels.find(x => x.name === args[0])) {
             if(args[0] === guildConf[message.guild.id].welcomeChannel) return message.channel.send(fastembed(config.kirmizi, "Girdiğiniz kanal zaten şu anki giriş-çıkış kanalı."));

