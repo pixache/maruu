@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
-const config = require("./commands/storages/config.json");
-const guildConf = require("./commands/storages/guildConf.json");
+const config = require("./config.json");
+const guildConf = require("./guildConf.json");
 const fs = require("fs");
 client.commands = new Discord.Collection();
 
@@ -28,7 +28,7 @@ client.on("ready", () => {
 			welcomeChannel: 'hoşgeldin',
 			welcomeRole: 'Üye'
 		}
-    fs.writeFile('./commands/storages/guildConf.json', JSON.stringify(guildConf, null, 2), (err) => {
+    fs.writeFile('./guildConf.json', JSON.stringify(guildConf, null, 2), (err) => {
      	if (err) console.log(err)
 		});
 	}
@@ -44,7 +44,7 @@ client.on('guildCreate', (guild) => { // If the client was added on a server, pr
 			welcomeRole: 'Üye'
 		}
     }
-    fs.writeFile('./commands/storages/guildConf.json', JSON.stringify(guildConf, null, 2), (err) => {
+    fs.writeFile('./guildConf.json', JSON.stringify(guildConf, null, 2), (err) => {
      	if (err) console.log(err)
 	});
 });
@@ -52,7 +52,7 @@ client.on('guildCreate', (guild) => { // If the client was added on a server, pr
 
 client.on('guildDelete', (guild) => { // If the client was removed on a server, proceed
      delete guildConf[guild.id]; // Deletes the Guild ID and Prefix
-     fs.writeFile('./commands/storages/guildConf.json', JSON.stringify(guildConf, null, 2), (err) => {
+     fs.writeFile('./guildConf.json', JSON.stringify(guildConf, null, 2), (err) => {
      	if (err) console.log(err)
 	})
 });
