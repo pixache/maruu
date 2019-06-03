@@ -30,7 +30,7 @@ module.exports.run = async(client, message, args) => {
             if(args[0] === guildConf[message.guild.id].welcomeChannel) return message.channel.send(fastembed(config.kirmizi, "Girdiğiniz kanal zaten şu anki giriş-çıkış kanalı."));
             guildConf[message.guild.id].welcomeChannel = args[0];
             message.channel.send(fastembed(config.yesil, ":white_check_mark: | Giriş-Çıkış kanalı **" + args[0] + "** olarak değiştirildi."));
-            fs.writeFile('../Maruu/storages/guildConf.json', JSON.stringify(guildConf, null, 2), (err) => {if(err) console.log(err)});
+            fs.writeFile('../Maruu/commands/storages/guildConf.json', JSON.stringify(guildConf, null, 2), (err) => {if(err) console.log(err)});
         }else{
             message.channel.send(fastembed(config.kirmizi, 'Bu isimde bir sohbet kanalı bulamadım!'));
         }
