@@ -8,7 +8,7 @@ module.exports.run = async(client, message, args) => {
 			fields: [
 				{
 				name: ":gear: | Admin Komutları",
-				value:"`at`, `ayarlar`,  `ban`, `girişkanalı`, `otorol`, `rolal`, `rolver`, `sil`",
+				value:"`at`,  `ban`, `rolal`, `rolver`, `sil`",
 				},
 				{
 				name: ':robot: | Bot Komutları',
