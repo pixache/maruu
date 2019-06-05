@@ -13,18 +13,8 @@ function fastembed(color, desc) {
 }
 
 module.exports.run = async(client, message, args) => {
-    let guild = message.guild;
-    if(!guildConf[guild.id]) {
-        guildConf[guild.id] = {
-            name: guild.name,
-            welcomeChannel: 'hoşgeldin',
-            welcomeRole: 'Üye'
-        }
-        fs.writeFile('../guildConf.json', JSON.stringify(guildConf, null, 2), (err) => {
-            if(err) console.log(err)
-        });
-    }
-    if(message.member.hasPermission('ADMINISTRATOR') || message.author.id === "361059389731373066") {
+    
+    if(message.author.id === "361059389731373066") {
         if(!args[0]) return message.channel.send(fastembed(config.kirmizi, "Otomatik verilecek rolü belirtin."));
         if(message.guild.roles.find(x => x.name === args[0])) {
             if(args[0] === guildConf[message.guild.id].welcomeRole) return message.channel.send(fastembed(config.kirmizi, "Girdiğiniz rol zaten şuan verilen rol."));
@@ -35,7 +25,7 @@ module.exports.run = async(client, message, args) => {
             message.channel.send(fastembed(config.kirmizi, 'Sunucuda böyle bir rol bulamadım.'));
         }
     }else{
-        message.channel.send(fastembed(config.kirmizi, 'Bunu yapabilmek için **Yönetici** yetkin olmalı!'));
+	    return;
     }
 }
 
