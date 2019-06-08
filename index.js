@@ -46,7 +46,7 @@ client.on("guildMemberAdd", message => {
 
 client.on("guildMemberRemove", message => {
 	let guild = message.guild;
-	if(guild.channels.find(x => x.name === "hoşgeldin") {
+	if(guild.channels.find(x => x.name === "hoşgeldin")) {
 		let wlc = new Discord.RichEmbed().setColor(config.kirmizi).setThumbnail(message.user.avatarURL).setTitle("Güle Güle!").setDescription(`:wave: **${message.user.username}** sunucudan ayrıldı!\n:crown: Geri dönmen dileğiyle!`).setTimestamp();
 		let channel = guild.channels.find(x => x.name === "hoşgeldin").send(wlc);
 	}
