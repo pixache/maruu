@@ -3,9 +3,9 @@ const config = require('../config.json');
 
 module.exports.run = async(client, message, args) => {
     if(message.author.id === "361059389731373066") {
-        if(!args[0]) message.channel.send(":x: | Lütfen yeni aktiviteyi belirtin!");
+        if(!args) message.channel.send(":x: | Lütfen yeni aktiviteyi belirtin!");
 
-        client.user.setActivity(args[0]);
+        client.user.setActivity(args);
     }else {
         return;
     }
