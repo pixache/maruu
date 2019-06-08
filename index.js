@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
 const config = require("./config.json");
-const guildConf = require("./guildConf.json");
+
 const fs = require("fs");
 client.commands = new Discord.Collection();
 
@@ -21,44 +21,16 @@ fs.readdir("./commands", (err, files) => {
 });
 
 client.on("ready", () => {
-	let guild = client.guilds.array().sort();
-	for(var i in guild) {
-		guildConf[guild[i].id] = {
-			guild: guild[i].name,
-			welcomeChannel: 'hoşgeldin',
-			welcomeRole: 'Üye'
-		}
-    fs.writeFile('./guildConf.json', JSON.stringify(guildConf, null, 2), (err) => {
-     	if (err) console.log(err)
-		});
-	}
+	
+ 
 	console.log(`${client.user.username} olarak giriş yapıldı.`);
 	client.user.setActivity(` ${config.prefix}yardım | ${client.guilds.size} sunucu - ${client.users.size} kullanıcı`, {type: 'LISTENING'});
 });
 
-client.on('guildCreate', (guild) => { // If the client was added on a server, proceed
-    if (!guildConf[guild.id]) { // If the guild's id is not on the GUILDCONF File, proceed
-		guildConf[guild.id] = {
-			guild: guild.name,
-			welcomeChannel: 'hoşgeldin',
-			welcomeRole: 'Üye'
-		}
-    }
-    fs.writeFile('./guildConf.json', JSON.stringify(guildConf, null, 2), (err) => {
-     	if (err) console.log(err)
-	});
-});
 
-
-client.on('guildDelete', (guild) => { // If the client was removed on a server, proceed
-     delete guildConf[guild.id]; // Deletes the Guild ID and Prefix
-     fs.writeFile('./guildConf.json', JSON.stringify(guildConf, null, 2), (err) => {
-     	if (err) console.log(err)
-	})
-});
 
 client.on("guildMemberAdd", member => {
-	let role = member.guild.roles.find(x => x.name === guildConf[member.guild.id].welcomeRole);
+	let role = member.guild.roles.find(x => x.name === "Üye");
 	if(role) {
 		member.addRole(role).catch(err => console.log(err));
 	}
@@ -66,17 +38,17 @@ client.on("guildMemberAdd", member => {
 
 client.on("guildMemberAdd", message => {
 	let guild = message.guild;
-	if(guild.channels.find(x => x.name === guildConf[guild.id].welcomeChannel)) {
+	if(guild.channels.find(x => x.name === "hoşgeldin")) {
 		let wlc = new Discord.RichEmbed().setColor(config.yesil).setThumbnail(message.user.avatarURL).setTitle("Hoş Geldin!").setDescription(`:wave: **${message.user.username}** sunucuya katıldı!\n:crown: **${message.guild.name}** sunucusuna hoşgeldin!`).setTimestamp();
-		let channel = guild.channels.find(x => x.name === guildConf[guild.id].welcomeChannel).send(wlc);
+		let channel = guild.channels.find(x => x.name === "hoşgeldin").send(wlc);
 	}
 });
 
 client.on("guildMemberRemove", message => {
 	let guild = message.guild;
-	if(guild.channels.find(x => x.name === guildConf[guild.id].welcomeChannel)) {
+	if(guild.channels.find(x => x.name === "hoşgeldin") {
 		let wlc = new Discord.RichEmbed().setColor(config.kirmizi).setThumbnail(message.user.avatarURL).setTitle("Güle Güle!").setDescription(`:wave: **${message.user.username}** sunucudan ayrıldı!\n:crown: Geri dönmen dileğiyle!`).setTimestamp();
-		let channel = guild.channels.find(x => x.name === guildConf[guild.id].welcomeChannel).send(wlc);
+		let channel = guild.channels.find(x => x.name === "hoşgeldin").send(wlc);
 	}
 });
 
