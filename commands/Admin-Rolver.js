@@ -1,7 +1,7 @@
 // Son güncelleme: 0.2.1.4 (24 Mayıs)
 
 const Discord = require("discord.js");
-const config = require("../config.json");
+const config = require("../data/config.json");
 
 function fastembed(color, title, desc, message) {
   let embed = new Discord.RichEmbed()

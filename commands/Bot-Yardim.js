@@ -1,5 +1,7 @@
+// Son Güncelleme 0.2.1.8 (11/06)
+
 const Discord = require('discord.js');
-const config = require("../config.json");
+const config = require("../data/config.json");
 
 module.exports.run = async(client, message, args) => {
 	message.channel.send({embed: {
@@ -8,7 +10,7 @@ module.exports.run = async(client, message, args) => {
 			fields: [
 				{
 				name: ":gear: | Admin Komutları",
-				value:"`at`, `ayarlar`,  `ban`, `girişkanalı`, `otorol`, `rolal`, `rolver`, `sil`",
+				value:"`at`, `ban`, `rolal`, `rolver`, `sabitle`, `sil`",
 				},
 				{
 				name: ':robot: | Bot Komutları',
@@ -20,7 +22,7 @@ module.exports.run = async(client, message, args) => {
 				},
 				{
 				name: ':spy: | Üye Komutları',
-				value: '`avatar`, `bilgi`, `çark`, `ping`, `söyle`, `thanos`, `yazıtura`, `zar`'
+				value: '`avatar`, `bilgi`, `çark`, `komutbilgi`, `ping`, `sayıtut`, `söyle`, `thanos`, `yazıtura`, `zar`'
 				}
 			],
 			timestamp: new Date(),

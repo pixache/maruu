@@ -1,15 +1,14 @@
 // Son güncelleme: 0.2.1.2 (23 Mayıs)
 
 const Discord = require("discord.js");
-const config = require("../config.json");
+const config = require("../data/config.json");
 
 function fastembed(color, title, desc, message) {
-	let embed = new Discord.RichEmbed()
+	let _embed = new Discord.RichEmbed()
 		.setColor(color)
 		.setTitle(title)
 		.setDescription(desc)
-	message.delete();
-	message.channel.send(embed);
+	message.channel.send(_embed);
 }
 
 module.exports.run = async(client, message, args) => {
@@ -36,5 +35,5 @@ module.exports.run = async(client, message, args) => {
 }
 
 module.exports.help = {
-	name: 'at'
+	name: 'at',
 }

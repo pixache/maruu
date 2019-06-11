@@ -23,11 +23,14 @@
     "bufferutil": "^4.0.1",
     "discord.js": "^11.5.1",
     "erlpack": "^0.1.2",
+    "ffmpeg": "0.0.4",
     "lodash.get": "^4.4.2",
     "lodash.set": "^4.3.2",
     "lodash.unset": "^4.5.2",
     "moment": "^2.24.0",
     "node-opus": "^0.3.2",
-    "tar": "^4.4.10"
+    "tar": "^4.4.10",
+    "util": "^0.12.0",
+    "ytdl-core": "^0.29.2"
   }
 }

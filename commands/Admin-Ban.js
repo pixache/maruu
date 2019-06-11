@@ -1,7 +1,8 @@
-// Son güncelleme: 0.2.1.2 (23 Mayıs)
+// Son güncelleme: 0.2.1.8 (11/06)
+// Yetki hatası düzeltildi.
 
 const Discord = require("discord.js");
-const config = require("../config.json");
+const config = require("../data/config.json");
 
 function fastembed(color, title, desc, message) {
 	let embed = new Discord.RichEmbed()
@@ -13,7 +14,7 @@ function fastembed(color, title, desc, message) {
 }
 
 module.exports.run = async(client, message, args) => {
-	if(!message.member.hasPermission("KICK_MEMBERS")) return fastembed(config.kirmizi, "Hata", ":no_entry: Gereken yetkiye sahip değilsin.", message);
+	if(!message.member.hasPermission("BAN_MEMBERS")) return fastembed(config.kirmizi, "Hata", ":no_entry: Gereken yetkiye sahip değilsin.", message);
 
 	let member = message.mentions.members.first();
 	if(!member) return fastembed(config.kirmizi, "Hata", ":no_entry: Bir kullanıcı etiketleyin.", message);

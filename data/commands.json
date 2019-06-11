@@ -1,0 +1,112 @@
+{
+    "at": {
+        "desc" : "Belirtilen kullanıcıyı sunucudan atar.",
+        "usage" : "m!at @kullanıcı <sebep>",
+        "perm" : "Kullanıcıları At"
+    },
+    "ban": {
+        "desc" : "Belirtilen kullanıcı sunucudan yasaklanır.",
+        "usage" : "m!ban @kullanıcı <sebep>",
+        "perm" : "Kullanıcıları Yasakla"
+    },
+    "sabitle": {
+        "desc" : "Belirtilen mesaj o kanala sabitlenir.",
+        "usage" : "[1] m!sabitle\n[2]Mesaj",
+        "perm" : "Mesajları Yönet"
+    },
+    "rolal": {
+        "desc" : "Belirtilen kullanıcının rolü alınır.",
+        "usage" : "m!rolal @kullanıcı <rol>",
+        "perm" : "Rolleri Yönet"
+    },
+    "rolver" : {
+        "desc" : "Belirtlilen kullanıcıya rol verir.",
+        "usage" : "m!rolver @kullanıcı <rol>",
+        "perm" : "Rolleri Yönet"
+    },
+    "sil" : {
+        "desc" : "Belirtilen miktarda mesaj siler.",
+        "usage" : "m!sil <sayı>",
+        "perm" : "Mesajları Yönet"
+    },
+    "bilgi" : {
+        "desc" : "Maruu hakkında bilgi verir.",
+        "usage" : "m!bilgi",
+        "perm" : "Yetki Gerekmez"
+    },
+    "davet" : {
+        "desc" : "Maruu'yu sunucunuza davet edersiniz.",
+        "usage" : "m!davet",
+        "perm" : "Yetki Gerekmez"
+    },
+    "destek" : {
+        "desc" : "Bot hakkında destek bilgilerini gönderir.",
+        "usage" : "m!destek",
+        "perm" : "Yetki Gerekmez"
+    },
+    "yardım" : {
+        "desc" : "Maruu'ya ait komutları gönderir.",
+        "usage" : "m!yardım",
+        "perm" : "Yetki Gerekmez"
+    },
+    "sunucubilgi" : {
+        "desc" : "Sunucu bilgilerini gösterir.",
+        "usage" : "m!sunucubilgi",
+        "perm" : "Yetki Gerekmez"
+    },
+    "sunucuikon" : {
+        "desc" : "Sunucu ikonunu gönderir.",
+        "usage" : "m!sunucuikon",
+        "perm" : "Yetki Gerekmez"
+    },
+    "avatar" : {
+        "desc" : "Sizin veya belirtilen kullanıcının avatarını gönderir.",
+        "usage" : "m!avatar [@kullanıcı]",
+        "perm" : "Yetki Gerekmez"
+    },
+    "üyebilgi" : {
+        "desc" : "Sizin veya belirtilen kullanıcının bilgilerini gönderir.",
+        "usage" : "m!üyebilgi [@kullanıcı]",
+        "perm" : "Yetki Gerekmez"
+    },
+    "çark" : {
+        "desc" : "Çark çevirirsiniz.",
+        "usage" : "m!çark",
+        "perm" : "Yetki Gerekmez"
+    },
+    "komutbilgi" : {
+        "desc" : "Belirtilen komutun bilgilerini gönderir.",
+        "usage" : "m!komutbilgi <komut>",
+        "perm" : "Yetki Gerekmez"
+    },
+    "ping" : {
+        "desc" : "Gecikmenizi ölçer.",
+        "usage" : "m!ping",
+        "perm" : "Yetki Gerekmez"
+    },
+    "sayıtut" : {
+        "desc" : "Maruu, 1 ile 100 arasında sayı tutar. Onu tahmin edersiniz.",
+        "usage" : "m!sayıtut",
+        "perm" : "Yetki Gerekmez"
+    },
+    "söyle" : {
+        "desc" : "Belirtilen mesaj söylenir.",
+        "usage" : "m!söyle <mesaj>",
+        "perm" : "Yetki Gerekmez"
+    },
+    "thanos" : {
+        "desc" : "Parmak şıklatma sizi nasıl etkiledi?",
+        "usage" : "m!thanos",
+        "perm" : "Yetki Gerekmez"
+    },
+    "yazıtura" : {
+        "desc" : "Para atarsınız, yazı veya tura gelir.",
+        "usage" : "m!yazıtura",
+        "perm" : "Yetki Gerekmez"
+    },
+    "zar" : {
+        "desc" : "Zar atarsınız.",
+        "usage" : "m!zar",
+        "perm" : "Yetki Gerekmez"
+    }
+}

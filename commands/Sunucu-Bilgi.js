@@ -2,7 +2,7 @@
 // Tarih yazımı değiştirildi.
 
 const Discord = require("discord.js");
-const config = require("../config.json");
+const config = require("../data/config.json");
 const moment = require('moment');
 
 module.exports.run = async(client, message, args) => {

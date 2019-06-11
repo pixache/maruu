@@ -2,7 +2,7 @@
 // Mesaj embed içine alındı.
 
 const Discord = require("discord.js");
-const config = require("../config.json");
+const config = require("../data/config.json");
 
 module.exports.run = async(client, message, args) => {
   let target = message.mentions.users.first() || message.author;
