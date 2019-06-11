@@ -1,7 +1,6 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
 const config = require("./config.json");
-
 const fs = require("fs");
 client.commands = new Discord.Collection();
 
@@ -14,20 +13,59 @@ fs.readdir("./commands", (err, files) => {
 	jsfile.forEach((f, i) => {
 		let props = require(`./commands/${f}`);
 		console.log(`[KOMUT: ${i + 1}] > ${f}`);
-
 		client.commands.set(props.help.name, props);
 		i = i+1;
 	});
 });
 
 client.on("ready", () => {
-	
- 
 	console.log(`${client.user.username} olarak giriş yapıldı.`);
-	client.user.setActivity(` ${config.prefix}yardım | ${client.guilds.size} sunucu - ${client.users.size} kullanıcı`, {type: 'LISTENING'});
+	client.user.setActivity(`${config.prefix}yardım - ${client.guilds.size} sunucu`, {type: 'LISTENING'});
 });
 
+client.on('guildCreate', guild => {
+	client.user.setActivity(`${config.prefix}yardım - ${client.guilds.size} sunucu`);
+	let ch = client.channels.find(x => x.name === "maruu-sunucular");
 
+	if(ch) {
+		let embd = new Discord.RichEmbed()
+			.setColor(config.yesil)
+			.setTitle('Yeni Sunucu Eklendi')
+			.setThumbnail(guild.iconURL)
+			.addField('Sunucu Adı', guild.name, true)
+			.addField('Üye Sayısı', guild.memberCount, true)
+			.addField('Kanal Sayısı', guild.channels.size, true)
+			.addField('Rol Sayısı', guild.roles.size, true)
+		ch.send(embd);
+	}
+
+	let embed = new Discord.RichEmbed()
+		.setColor(config.mavi)
+		.setTitle('Sunucuya Eklediğiniz İçin Teşekkürler!')
+		.setThumbnail(client.user.avatarURL)
+		.addField('Bilgi', "Beni sunucuya eklediğiniz için teşekkürler. Verilenleri yaparsanız daha iyi performans sağlarım.")
+		.addField('Hoşgeldin Kanalı', "hoşgeldin")
+		.addField('Yeni Üye Rolü', "Üye")
+		.setTimestamp()
+		.setFooter('Maruu v0.2.1.7', client.user.avatarURL);
+	guild.owner.send(embed);
+});
+
+client.on('guildDelete', guild => {
+	client.user.setActivity(`${config.prefix}yardım - ${client.guilds.size} sunucu`);
+	let ch = client.channels.find(x => x.name === "maruu-sunucular");
+	if(ch) {
+		let embd = new Discord.RichEmbed()
+			.setColor(config.kirmizi)
+			.setTitle('Sunucudan Atıldım')
+			.setThumbnail(guild.iconURL)
+			.addField('Sunucu Adı', guild.name, true)
+			.addField('Üye Sayısı', guild.memberCount, true)
+			.addField('Kanal Sayısı', guild.channels.size, true)
+			.addField('Rol Sayısı', guild.roles.size, true)
+		ch.send(embd);
+	}
+});
 
 client.on("guildMemberAdd", member => {
 	let role = member.guild.roles.find(x => x.name === "Üye");

@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-const config = require('../config.json');
+const config = require("../config.json");
 
 module.exports.run = async(client, message, args) => {
 	message.channel.send({embed: {
@@ -8,7 +8,7 @@ module.exports.run = async(client, message, args) => {
 			fields: [
 				{
 				name: ":gear: | Admin Komutları",
-				value:"`at`,  `ban`, `rolal`, `rolver`, `sil`",
+				value:"`at`, `ayarlar`,  `ban`, `girişkanalı`, `otorol`, `rolal`, `rolver`, `sil`",
 				},
 				{
 				name: ':robot: | Bot Komutları',

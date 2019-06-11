@@ -1,19 +1,33 @@
 {
-  "name": "package",
+  "name": "maruu",
   "version": "1.0.0",
-  "description": "",
-  "main": "app.js",
-  "dependencies": {
-    "discord.js": "^11.3.2",
-    "discord.js-arbitrary-ffmpeg": "^1.0.0",
-    "moment": "^2.24.0",
-    "node-gyp": "^3.7.0",
-    "rebuild": "^0.1.2"
-  },
-  "devDependencies": {},
+  "description": "Pretty good moderation bot",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node index.js"
   },
-  "author": "",
-  "license": "ISC"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pixache/maruu.git"
+  },
+  "keywords": [
+    "maruu"
+  ],
+  "author": "Emre Levent",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pixache/maruu/issues"
+  },
+  "homepage": "https://github.com/pixache/maruu#readme",
+  "dependencies": {
+    "bufferutil": "^4.0.1",
+    "discord.js": "^11.5.1",
+    "erlpack": "^0.1.2",
+    "lodash.get": "^4.4.2",
+    "lodash.set": "^4.3.2",
+    "lodash.unset": "^4.5.2",
+    "moment": "^2.24.0",
+    "node-opus": "^0.3.2",
+    "tar": "^4.4.10"
+  }
 }
