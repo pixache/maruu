@@ -27,7 +27,7 @@ module.exports.run = async(client, message, args) => {
                         message.channel.send(fastembed(config.mavi, emote["yep"] + " Tamam, sabitlemeyi iptal ettim."));
                     }else {
                         collected.first().pin()
-                        message.channel.send(fastembed(config.yesil, emote["yep"] + " <:yep:588029697523187763> Mesaj sabitlendi!"));
+                        message.channel.send(fastembed(config.yesil, emote["yep"] + " Mesaj sabitlendi!"));
                     }
                 })
                 .catch(function(){
