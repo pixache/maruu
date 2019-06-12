@@ -33,9 +33,9 @@ module.exports.run = async(client, message, args) => {
 			}
 		}});
 
-	let m = await message.channel.send(':mailbox: ' + message.user.username + ', mesaj kutunu kontrol et!')
-		.catch(err => m.edit('Sana mesaj gönderemedim, sunucudan mesaj almayı engellemiş olabilir misin?'))
-		.then(m.delete(5000));
+	let m = await message.channel.send(':mailbox: | **' + message.author.username + '**, mesaj kutunu kontrol et!')
+		.catch(err => m.edit('Sana mesaj gönderemedim, sunucudan mesaj almayı engellemiş olabilir misin?'));
+	m.delete(5000)
 }
 
 module.exports.help = {
