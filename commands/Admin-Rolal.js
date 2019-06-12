@@ -1,36 +1,35 @@
-// Son güncelleme: 0.2.1.2 (23 Mayıs)
+// Son güncelleme: 0.2.2 (12/06)
+// Mesajlar değiştirildi.
 
 const Discord = require("discord.js");
 const config = require("../data/config.json");
+const emote = require("../data/emotes.json");
 
-function fastembed(color, title, desc, message) {
-  let embed = new Discord.RichEmbed()
-    .setColor(color)
-    .setTitle(title)
-    .setDescription(desc)
-
-  message.delete();
-  message.channel.send(embed);
+function e(color, title) {
+	let _embed = new Discord.RichEmbed()
+		.setColor(color)
+		.setTitle(title)
+	return _embed;
 }
 
-module.exports.run = async(client, message, args) => {
-    let member = message.mentions.members.first();
-    let rol = args.slice(1).join(" ");
-    let guildrole = message.guild.roles.find(role => role.name === `${rol}`);
+module.exports.run = async(client, m, args) => {
+	let member = m.mentions.members.first();
+	let rol = args.slice(1).join(" ");
+	let guildrole = m.guild.roles.find(role => role.name === `${rol}`);
 
-    if(!message.member.hasPermission("MANAGE_ROLES")) {
-      fastembed(config.kirmizi, "Hata", ":no_entry: Gereken yetkiye sahip değilsin.", message)
-    }else{
-      if(!member) return fastembed(config.kirmizi, "Hata", `Lütfen sunucunun bir üyesini belirtin.`, message)
-      if(!rol) return fastembed(config.kirmizi, "Hata", `Lütfen alacağınız rolü belirtin.`, message)
-      if(!guildrole) return fastembed(config.kirmizi, "Hata", `${rol} adında bir rol bulunamadı.`, message)
-      if(!member.roles.find(role => role.name === `${rol}`)) return fastembed(config.kirmizi, "Hata", `**${member.user.username}**, **${rol}** rolüne zaten sahip değil.`, message)
+	if(!m.member.hasPermission("MANAGE_ROLES")) {
+		m.channel.send(e(config.kirmizi, emote["nope"] + " Bu komutu kullanabilmek için **Rolleri Yönet** yetkisi gerekir.")); return;
+	}else{
+		if(!member) return m.channel.send(e(config.kirmizi, `${emote["nope"]} Lütfen bir üye etiketleyin.`));
+		if(!rol) return m.channel.send(e(config.kirmizi, `${emote["nope"]} Lütfen alacağınız rolü belirtin.`));
+		if(!guildrole) return m.channel.send(e(config.kirmizi, `${emote["nope"]} ${rol} adında bir rol bulamadım.`));
+		if(!member.roles.find(role => role.name === `${rol}`)) return m.channel.send(e(config.kirmizi, `${emote["nope"]} **${member.user.username}** bu role zaten sahip değil.`));
 
-      member.removeRole(guildrole).catch(console.error);
-      fastembed(config.yesil, "Rol Alındı", `Rol Alındı: ${member}\nAlınan Rol: ${rol}\nRolü Alan: ${message.author.username}`, message);
-    }
+		member.removeRole(guildrole).catch(console.error);
+		m.channel.send(e(config.yesil, `${emote["yep"]} **${member.user.username}** üyesinden **${rol}** rolü başarıyla alındı.`));
+	}
 }
 
 module.exports.help = {
-  name: 'rolal'
+	name: 'rolal'
 }

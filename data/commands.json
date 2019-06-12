@@ -4,9 +4,14 @@
         "usage" : "m!at @kullanıcı <sebep>",
         "perm" : "Kullanıcıları At"
     },
-    "ban": {
+    "başlık": {
+        "desc" : "Kanala bir başlık belirler veya onu siler.",
+        "usage" : "m!başlık <ayarla/sıfırla/bak>",
+        "perm" :  "Kanalları Yönet"
+    },
+    "yasakla": {
         "desc" : "Belirtilen kullanıcı sunucudan yasaklanır.",
-        "usage" : "m!ban @kullanıcı <sebep>",
+        "usage" : "m!yasakla @kullanıcı <sebep>",
         "perm" : "Kullanıcıları Yasakla"
     },
     "sabitle": {

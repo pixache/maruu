@@ -1,16 +1,17 @@
-// Son Güncelleme 0.2.1.8 (11/06)
+// Son Güncelleme 0.2.2 (12/06)
+// Mesaj artık kullanıcıya özel olarak gidiyor.
 
 const Discord = require('discord.js');
 const config = require("../data/config.json");
 
 module.exports.run = async(client, message, args) => {
-	message.channel.send({embed: {
+	message.author.send({embed: {
 	color: 3447003,
 	author: {name: 'Maruu ❯ Yardım'},
 			fields: [
 				{
 				name: ":gear: | Admin Komutları",
-				value:"`at`, `ban`, `rolal`, `rolver`, `sabitle`, `sil`",
+				value:"`at`, `ban`, `başlık`, `rolal`, `rolver`, `sabitle`, `sil`",
 				},
 				{
 				name: ':robot: | Bot Komutları',
@@ -31,6 +32,10 @@ module.exports.run = async(client, message, args) => {
 				text: `${message.author.tag} tarafından istendi.`
 			}
 		}});
+
+	let m = await message.channel.send(':mailbox: ' + message.user.username + ', mesaj kutunu kontrol et!')
+		.catch(err => m.edit('Sana mesaj gönderemedim, sunucudan mesaj almayı engellemiş olabilir misin?'))
+		.then(m.delete(5000));
 }
 
 module.exports.help = {
