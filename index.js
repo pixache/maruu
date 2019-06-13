@@ -1,5 +1,5 @@
 const Discord = require("discord.js");
-const client = new Discord.Client();
+const client = new Discord.Client({fetchAllMembers: true, disableEveryone: true});
 const config = require("./data/config.json");
 const fs = require("fs");
 client.commands = new Discord.Collection();
