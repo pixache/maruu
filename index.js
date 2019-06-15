@@ -20,7 +20,7 @@ fs.readdir("./commands", (err, files) => {
 
 client.on("ready", () => {
 	console.log(`${client.user.username} olarak giriş yapıldı.`);
-	client.user.setActivity(`${config.prefix}yardım - ${client.guilds.size} sunucu`, {type: 'LISTENING'});
+	client.user.setActivity(`m!yardım - ${client.guilds.size} sunucu`, {type: 'LISTENING'});
 });
 
 client.on('guildCreate', guild => {
