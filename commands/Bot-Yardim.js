@@ -11,7 +11,7 @@ module.exports.run = async(client, message, args) => {
 			fields: [
 				{
 				name: ":gear: | Admin Komutları",
-				value:"`at`, `ban`, `başlık`, `rolal`, `rolver`, `sabitle`, `sil`",
+				value:"`at`, `ban`, `başlık`, `güncellemeler`, `rolal`, `rolver`, `sabitle`, `sil`",
 				},
 				{
 				name: ':robot: | Bot Komutları',

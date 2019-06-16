@@ -21,10 +21,6 @@ module.exports.run = async(client, message, args) => {
 				}
 			],
 			timestamp: new Date(),
-			footer: {
-				icon_url: client.user.avatarURL,
-				text: `${message.author.tag} tarafından istendi.`
-			}
 		}});
 
 	let m = await message.channel.send(':outbox_tray: | **' + message.author.username + '**, sürüm bilgisini mesaj kutuna bıraktım!')
