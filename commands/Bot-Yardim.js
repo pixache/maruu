@@ -19,7 +19,7 @@ module.exports.run = async(client, message, args) => {
 				},
 				{
 				name: ':file_cabinet: | Sunucu Komutları',
-				value: '`sunucubilgi`, `sunucuikon`',
+				value: '`sunucubilgi`',
 				},
 				{
 				name: ':spy: | Üye Komutları',

@@ -15,6 +15,8 @@ module.exports.run = async(client, message, args) => {
 			.addField('Açıklama', commands[args[0]].desc)
 			.addField('Kullanım', commands[args[0]].usage)
 			.addField('Yetki', commands[args[0]].perm)
+			.addField('Bekleme Süresi', commands["at"].cd)
+			.setThumbnail('https://i.imgur.com/Kvol3kE.png')
 		msg.edit(embed);
 	}else {
 		msg.edit("Böyle bir komut bulamadım.")
@@ -22,5 +24,5 @@ module.exports.run = async(client, message, args) => {
 }
 
 module.exports.help = {
-	name: 'komutbilgi'
+	name: 'komutbilgi',
 }

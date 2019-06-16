@@ -1,8 +1,17 @@
 const Discord = require("discord.js");
 const client = new Discord.Client({fetchAllMembers: true, disableEveryone: true});
 const config = require("./data/config.json");
+const emote = require('./data/emotes.json');
 const fs = require("fs");
+const talkedRecently = new Set();
 client.commands = new Discord.Collection();
+
+function e(color, title) {
+	let _embed = new Discord.RichEmbed()
+		.setColor(color)
+		.setTitle(title)
+	return _embed;
+}
 
 fs.readdir("./commands", (err, files) => {
 	if(err) console.log(err);
@@ -18,9 +27,13 @@ fs.readdir("./commands", (err, files) => {
 	});
 });
 
+client.on('UnhandledPromiseRejectionWarning', err => {
+	console.log(err)
+});
+
 client.on("ready", () => {
 	console.log(`${client.user.username} olarak giriş yapıldı.`);
-	client.user.setActivity(`m!yardım - ${client.guilds.size} sunucu`, {type: 'LISTENING'});
+	client.user.setActivity(`${config.prefix}yardım - ${client.guilds.size} sunucu`, {type: 'LISTENING'});
 });
 
 client.on('guildCreate', guild => {
@@ -43,7 +56,7 @@ client.on('guildCreate', guild => {
 		.setColor(config.mavi)
 		.setTitle('Sunucuya Eklediğiniz İçin Teşekkürler!')
 		.setThumbnail(client.user.avatarURL)
-		.addField('Bilgi', "Beni sunucuya eklediğiniz için teşekkürler. Verilenleri yaparsanız daha iyi performans sağlarım.")
+		.addField('Bilgi', "Beni sunucuya eklediğiniz için teşekkürler.\n Verilenleri yaparsanız daha iyi performans sağlarım.")
 		.addField('Hoşgeldin Kanalı', "hoşgeldin")
 		.addField('Yeni Üye Rolü', "Üye")
 		.setTimestamp()
@@ -91,15 +104,31 @@ client.on("guildMemberRemove", message => {
 });
 
 client.on("message", async message => {
-	if(message.author.bot || message.content.indexOf(config.prefix) !== 0 || message.channel.type === "dm") return;
-	
-	let prefix = config.prefix;
+	const prefixes = ['m!', 'm:', 'm@'];
+	let prefix = false;
+	for(const thisPrefix of prefixes) {
+	  if(message.content.startsWith(thisPrefix)) prefix = thisPrefix;
+	}
+
+	if(!prefix || message.author.bot || message.content.includes(prefixes.some) || message.channel.type === "dm") return;
+
 	let messageArray = message.content.split(" ");
 	let cmd = messageArray[0];
 	let args = messageArray.slice(1);
 	
 	let commandfile = client.commands.get(cmd.slice(prefix.length));
-	if(commandfile) commandfile.run(client, message, args);	
+	if(commandfile) {
+		if (talkedRecently.has(message.author.id)) {
+			let a = await message.channel.send(e(config.mavi, ":clock10: Her **4** saniyede bir komut kullanabilirsin."));
+			a.delete(2000);
+    	} else {
+			commandfile.run(client, message, args);
+			talkedRecently.add(message.author.id);
+			setTimeout(() => {
+				talkedRecently.delete(message.author.id);
+			}, 4000);
+    }
+	}	
 });
 
 client.login(process.env.BOT_TOKEN);

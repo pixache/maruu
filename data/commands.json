@@ -2,7 +2,8 @@
     "at": {
         "desc" : "Belirtilen kullanıcıyı sunucudan atar.",
         "usage" : "m!at @kullanıcı <sebep>",
-        "perm" : "Kullanıcıları At"
+        "perm" : "Kullanıcıları At",
+        "cd" : "4 saniye"
     },
     "başlık": {
         "desc" : "Kanala bir başlık belirler veya onu siler.",
@@ -83,6 +84,7 @@
         "desc" : "Belirtilen komutun bilgilerini gönderir.",
         "usage" : "m!komutbilgi <komut>",
         "perm" : "Yetki Gerekmez"
+
     },
     "ping" : {
         "desc" : "Gecikmenizi ölçer.",
