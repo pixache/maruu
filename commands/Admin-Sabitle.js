@@ -13,7 +13,7 @@ function fastembed(color, desc) {
   
 
 module.exports.run = async(client, message, args) => {
-    if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.channel.send(fastembed(config.kirmizi, emote["nope"] + " Bu komutu kullanmak için 'Mesajları Yönet' yetkisi gerekir."));
+    if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.channel.send(fastembed(config.mor, emote["nope"] + " Bu komutu kullanmak için 'Mesajları Yönet' yetkisi gerekir."));
     
     let msg = await message.channel.send(fastembed(config.mavi, emote["pin"] + " Pekala, şimdi yazacağın mesaj sabitlenecek. 'iptal' yazarak çıkabilirsin."))
         .then(function(){
@@ -33,7 +33,7 @@ module.exports.run = async(client, message, args) => {
                     }
                 })
                 .catch(function(){
-                    message.channel.send(fastembed(config.kirmizi, emote["nope"] + " Süren doldu, hiç mesaj yazmadın."));
+                    message.channel.send(fastembed(config.mor, emote["nope"] + " Süren doldu, hiç mesaj yazmadın."));
             });
         });
 }

@@ -18,12 +18,12 @@ module.exports.run = async(client, m, args) => {
 	let guildrole = m.guild.roles.find(role => role.name === `${rol}`);
 
 	if(!m.member.hasPermission("MANAGE_ROLES")) {
-		m.channel.send(e(config.kirmizi, emote["nope"] + " Bu komutu kullanabilmek için **Rolleri Yönet** yetkisi gerekir.")); return;
+		m.channel.send(e(config.mor, emote["nope"] + " Bu komutu kullanabilmek için **Rolleri Yönet** yetkisi gerekir.")); return;
 	}else{
-		if(!member) return m.channel.send(e(config.kirmizi, `${emote["nope"]} Lütfen bir üye etiketleyin.`));
-		if(!rol) return m.channel.send(e(config.kirmizi, `${emote["nope"]} Lütfen alacağınız rolü belirtin.`));
-		if(!guildrole) return m.channel.send(e(config.kirmizi, `${emote["nope"]} ${rol} adında bir rol bulamadım.`));
-		if(!member.roles.find(role => role.name === `${rol}`)) return m.channel.send(e(config.kirmizi, `${emote["nope"]} **${member.user.username}** bu role zaten sahip değil.`));
+		if(!member) return m.channel.send(e(config.mor, `${emote["nope"]} Lütfen bir üye etiketleyin.`));
+		if(!rol) return m.channel.send(e(config.mor, `${emote["nope"]} Lütfen alacağınız rolü belirtin.`));
+		if(!guildrole) return m.channel.send(e(config.mor, `${emote["nope"]} ${rol} adında bir rol bulamadım.`));
+		if(!member.roles.find(role => role.name === `${rol}`)) return m.channel.send(e(config.mor, `${emote["nope"]} **${member.user.username}** bu role zaten sahip değil.`));
 
 		member.removeRole(guildrole).catch(console.error);
 		m.channel.send(e(config.yesil, `${emote["yep"]} **${member.user.username}** üyesinden **${rol}** rolü başarıyla alındı.`));

@@ -17,13 +17,13 @@ function e(color, desc) {
 module.exports.run = async(client, message, args) => {
 	let deleteCount = parseInt(args[0], 10);
 	if(!deleteCount || deleteCount < 2 || deleteCount > 100) {
-		let msg = await message.channel.send(e(config.mavi, emote["nope"] + " Lütfen **2** ile **100** arasında bir sayı girin."));
+		let msg = await message.channel.send(e(config.mor, emote["nope"] + " Lütfen **2** ile **100** arasında bir sayı girin."));
 		msg.delete(5000);
 	}else {
 		let fetched = await message.channel.fetchMessages({limit: deleteCount});
-		let m = await message.channel.send(e(config.yesil, emote["yep"] + " Başarıyla **" + deleteCount + "** mesaj silindi."));
+		let m = await message.channel.send(e(config.mor, emote["yep"] + " Başarıyla **" + deleteCount + "** mesaj silindi."));
 	
-		message.channel.bulkDelete(fetched).catch(error => message.channel.send(e(config.mavi, emote["nope"] + ` Mesajlar silinemedi: ${error}`)));
+		message.channel.bulkDelete(fetched).catch(error => message.channel.send(e(config.mor, emote["nope"] + ` Mesajlar silinemedi: ${error}`)));
 		m.delete(4000);
 	}
 }

@@ -14,20 +14,20 @@ function e(color, title) {
 }
 
 module.exports.run = async(client, m, args) => {
-	if(!m.member.hasPermission("BAN_MEMBERS")) return m.channel.send(e(config.kirmizi, emote["nope"] + " Bu komutu kullanmak için **Kullanıcıları Yasakla** yetkisi gerekir."));
+	if(!m.member.hasPermission("BAN_MEMBERS")) return m.channel.send(e(config.mor, emote["nope"] + " Bu komutu kullanmak için **Kullanıcıları Yasakla** yetkisi gerekir."));
 
 	let member = m.mentions.members.first();
-	if(!member) return m.channel.send(e(config.kirmizi, emote["nope"] + " Lütfen bir kullanıcı etiketleyin."));
-	if(!member.bannable) return m.channel.send(e(config.kirmizi, emote["nope"] + " Bu kullanıcıyı yasaklayamam."))
+	if(!member) return m.channel.send(e(config.mor, emote["nope"] + " Lütfen bir kullanıcı etiketleyin."));
+	if(!member.bannable) return m.channel.send(e(config.mor, emote["nope"] + " Bu kullanıcıyı yasaklayamam."))
 
 	let reason = args.slicm.channel.send(1).join(" ");
 	if(!reason) reason = "Sebep belirtilmedi.";
 
 	await member.ban(reason)
-		.catch(error => m.channel.send(e(config.kirmizi, emote["nope"] + ` Kullanıcıyı yasaklayamadım: ${error}`)));
+		.catch(error => m.channel.send(e(config.mor, emote["nope"] + ` Kullanıcıyı yasaklayamadım: ${error}`)));
 
 	let banned = new Discord.RichEmbed()
-		.setColor(config.kirmizi)
+		.setColor(config.mor)
 		.setTitle("Kullanıcı Yasaklandı")
 		.addField(`Yasaklanan:`, `${member.user.tag}`)
 		.addField(`Yasaklayan:`, `${m.author.tag}`)

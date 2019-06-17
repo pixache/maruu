@@ -10,20 +10,20 @@ module.exports.run = async(client, message, args) => {
 	author: {name: 'Maruu ❯ Yardım'},
 			fields: [
 				{
-				name: ":gear: | Admin Komutları",
+				name: ":gear: | **Admin Komutları**",
 				value:"`at`, `ban`, `başlık`, `güncellemeler`, `rolal`, `rolver`, `sabitle`, `sil`",
 				},
 				{
-				name: ':robot: | Bot Komutları',
+				name: ':robot: | **Bot Komutları**',
 				value: "`bilgi`, `davet`, `destek`, `yardım`",
 				},
 				{
-				name: ':file_cabinet: | Sunucu Komutları',
+				name: ':file_cabinet: | **Sunucu Komutları**',
 				value: '`sunucubilgi`',
 				},
 				{
-				name: ':spy: | Üye Komutları',
-				value: '`avatar`, `bilgi`, `çark`, `komutbilgi`, `ping`, `sayıtut`, `söyle`, `thanos`, `yazıtura`, `zar`'
+				name: ':spy: | **Üye Komutları**',
+				value: '`avatar`, `bilgi`, `çark`, `komutbilgi`, `ping`, `sayıtut`, `sorusor`, `söyle`, `thanos`, `yazıtura`, `zar`'
 				}
 			],
 			timestamp: new Date(),

@@ -13,20 +13,20 @@ function e(color, title) {
 }
 
 module.exports.run = async(client, m, args) => {
-	if(!m.member.hasPermission("KICK_MEMBERS")) return m.channel.send(e(config.kirmizi, emote["nope"] + " Bu komutu kullanmak için **Kullanıcıları At** yetkisi gerekir."));
+	if(!m.member.hasPermission("KICK_MEMBERS")) return m.channel.send(e(config.mor, emote["nope"] + " Bu komutu kullanmak için **Kullanıcıları At** yetkisi gerekir."));
 
 	let member = m.mentions.members.first();
-	if(!member) return m.channel.send(e(config.kirmizi, emote["nope"] + " Lütfen bir kullanıcı etiketleyin."));
-	if(!member.kickable) return m.channel.send(e(config.kirmizi, emote["nope"] + " Bu kullanıcıyı atamam."))
+	if(!member) return m.channel.send(e(config.mor, emote["nope"] + " Lütfen bir kullanıcı etiketleyin."));
+	if(!member.kickable) return m.channel.send(e(config.mor, emote["nope"] + " Bu kullanıcıyı atamam."))
 
 	let reason = args.slice(1).join(" ");
 	if(!reason) reason = "Sebep belirtilmedi.";
 
 	await member.kick(reason)
-		.catch(error => m.channel.send(e(config.kirmizi, emote["nope"] + `Kullanıcıyı atamadım: ${err}`)));
+		.catch(error => m.channel.send(e(config.mor, emote["nope"] + `Kullanıcıyı atamadım: ${err}`)));
 
 	let kicked = new Discord.RichEmbed()
-		.setColor(config.kirmizi)
+		.setColor(config.mor)
 		.setTitle("Kullanıcı Atıldı")
 		.addField(`Atılan:`, `${member.user.tag}`)
 		.addField(`Atan:`, `${m.author.tag}`)

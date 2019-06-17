@@ -13,7 +13,7 @@ function fastembed(color, desc) {
   
 
 module.exports.run = async(client, message, args) => {
-    if(!message.member.hasPermission('MANAGE_CHANNELS')) return message.channel.send(fastembed(config.kirmizi, emote["nope"] + " Bu komutu kullanmak için 'Mesajları Yönet' yetkisi gerekir."));
+    if(!message.member.hasPermission('MANAGE_CHANNELS')) return message.channel.send(fastembed(config.mor, emote["nope"] + " Bu komutu kullanmak için 'Mesajları Yönet' yetkisi gerekir."));
     
     let komut = args[0];
     if(komut === "sıfırla") {
@@ -38,12 +38,12 @@ module.exports.run = async(client, message, args) => {
                     }
                 })
                 .catch(function(){
-                    message.channel.send(fastembed(config.kirmizi, emote["nope"] + " Süren doldu, hiç mesaj yazmadın."));
+                    message.channel.send(fastembed(config.mor, emote["nope"] + " Süren doldu, hiç mesaj yazmadın."));
             });
         });
     }else if(komut === "bak" || !komut) {
         if(message.channel.topic) return message.channel.send("**Kanal başlığı:** ```\n" + message.channel.topic + "\n```");
-        else return message.channel.send(fastembed(config.kirmizi, emote["nope"] + " Bu kanalın başlığı yok."));
+        else return message.channel.send(fastembed(config.mor, emote["nope"] + " Bu kanalın başlığı yok."));
     }
 }
 

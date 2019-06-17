@@ -60,10 +60,10 @@
         "usage" : "m!sunucubilgi",
         "perm" : "Yetki Gerekmez"
     },
-    "sunucuikon" : {
-        "desc" : "Sunucu ikonunu gönderir.",
-        "usage" : "m!sunucuikon",
-        "perm" : "Yetki Gerekmez"
+    "güncellemeler" : {
+        "desc" : "Maruu'nun son değişikliklerini gösterir.",
+        "usage" : "m!güncellemeler",
+        "perm" : "Yönetici"
     },
     "avatar" : {
         "desc" : "Sizin veya belirtilen kullanıcının avatarını gönderir.",
@@ -94,6 +94,11 @@
     "sayıtut" : {
         "desc" : "Maruu, 1 ile 100 arasında sayı tutar. Onu tahmin edersiniz.",
         "usage" : "m!sayıtut",
+        "perm" : "Yetki Gerekmez"
+    },
+    "sorusor" : {
+        "desc" : "Maruu'ya bir soru sorarsınız",
+        "usage" : "m!sorusor <soru>",
         "perm" : "Yetki Gerekmez"
     },
     "söyle" : {
