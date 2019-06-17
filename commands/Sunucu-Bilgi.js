@@ -48,7 +48,7 @@ module.exports.run = async(client, message, args) => {
 		.setColor(config.mavi)
 		if(message.guild.emojis.size > 1) {
 			emojiler.setTitle('Emojiler (' + message.guild.emojis.size + ')')
-			emojiler.setDescription('Emojiler (' + message.guild.emojis.size + ')', message.guild.emojis.array().sort().join(" "), true)
+			emojiler.setDescription(message.guild.emojis.array().sort().join(" "))
 		}else {
 			emojiler.setTitle('Emojiler (0)')
 			emojiler.setDescription('Bu sunucunun hiç emojisi yok.')
