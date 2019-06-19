@@ -35,6 +35,11 @@
         "usage" : "m!sil <sayı>",
         "perm" : "Mesajları Yönet"
     },
+    "bildir" : {
+        "desc" : "Bug, istek veya başka bir şey bildir.",
+        "usage" : "m!bildir",
+        "perm" : "Yetki Gerekmez"
+    },
     "bilgi" : {
         "desc" : "Maruu hakkında bilgi verir.",
         "usage" : "m!bilgi",
@@ -84,7 +89,6 @@
         "desc" : "Belirtilen komutun bilgilerini gönderir.",
         "usage" : "m!komutbilgi <komut>",
         "perm" : "Yetki Gerekmez"
-
     },
     "ping" : {
         "desc" : "Gecikmenizi ölçer.",
@@ -109,6 +113,11 @@
     "thanos" : {
         "desc" : "Parmak şıklatma sizi nasıl etkiledi?",
         "usage" : "m!thanos",
+        "perm" : "Yetki Gerekmez"
+    },
+    "tkm" : {
+        "desc" : "Taş, Kağıt, Makas.",
+        "usage" : "m!tkm <taş/kağıt/makas>",
         "perm" : "Yetki Gerekmez"
     },
     "yazıtura" : {

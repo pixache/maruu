@@ -14,13 +14,12 @@ function e(color, desc) {
 let embed = new Discord.RichEmbed()
 	.setColor(config.mor)
 	.setTitle('Maruu ❯ Güncellemeler')
-	.addField(':inbox_tray: | Güncelleme 0.2.2.2',
+	.addField(':inbox_tray: | Güncelleme 0.2.2.3',
 			"**Eklenenler:**\n" +
-			"**>** `sorusor` komutu eklendi.\n" +
-			"**>** `söyle` komutu geliştirildi.\n\n" + 
+			"**>** `tkm` komutu eklendi.\n" +
+			"**>** `bildir` komutu eklendi.\n\n" + 
 			"**İyileştirme:**\n" +
-			"**>** `güncellemeler` komutu düzeltildi.\n" +
-			"**>** `sunucubilgi` komutları düzeltildi."
+			"**>** Bekleme süresi hatası düzeltildi."
 			);
 
 module.exports.run = async(client, message, args) => {

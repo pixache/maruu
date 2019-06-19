@@ -15,9 +15,9 @@ module.exports.run = async(client, message, args) => {
         .setTitle("Maruu > Bilgiler")
         .setThumbnail(client.user.avatarURL)
         .addField(`Genel Bilgiler`, `**Geliştirici:** Awakai#1586\n**Destek Sunucusu:** [Tıkla ve Gel](https://discord.gg/NBA8wYT)\n**Oy Ver:** [Tıkla](https://discordbots.org/bot/577503350451339285/vote)`, true)
-        .addField(`Bot Bilgileri`, `**Sürüm:** v0.2.2.2 (17/06)\n**Gecikme:** ${Math.floor(client.ping)} milisaniye\n**Online süresi:** ${uptime}`, true)
+        .addField(`Bot Bilgileri`, `**Sürüm:** v0.2.3 (17/06)\n**Gecikme:** ${Math.floor(client.ping)} milisaniye\n**Online süresi:** ${uptime}`, true)
         .addField(`Sunucu Bilgileri`, `**Sunucular:** ${client.guilds.size}\n**Kanallar:** ${client.channels.size}\n**Kullanıcılar:** ${client.users.size}`, true)
-        .addField(`Diğer Bilgiler`, `**Kitaplık:** discord.js\n**Discord.js Sürümü:** 11.3.2\n**NodeJS Sürümü:** 10.15.3`, true)
+        .addField(`Diğer Bilgiler`, `**Komut Sayısı:** 28\n**Discord.js Sürümü:** 11.3.2\n**NodeJS Sürümü:** 10.15.3`, true)
         .setTimestamp()
         .setFooter(`${message.author.username} tarafından istendi.`, client.user.avatarURL);
     message.channel.send(bilgi);

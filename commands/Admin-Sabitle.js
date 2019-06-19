@@ -20,7 +20,7 @@ module.exports.run = async(client, message, args) => {
             message.channel.awaitMessages(response => message.content, {
                 max: 1,
                 time: 100000000,
-                errors: ['time'],
+                errors: ['time']
                 })
                 .then((collected) => {
                     if(collected.first().author === message.author) {

@@ -15,7 +15,7 @@ module.exports.run = async(client, message, args) => {
 				},
 				{
 				name: ':robot: | **Bot Komutları**',
-				value: "`bilgi`, `davet`, `destek`, `yardım`",
+				value: "`bildir`, `bilgi`, `davet`, `destek`, `yardım`",
 				},
 				{
 				name: ':file_cabinet: | **Sunucu Komutları**',
@@ -23,7 +23,7 @@ module.exports.run = async(client, message, args) => {
 				},
 				{
 				name: ':spy: | **Üye Komutları**',
-				value: '`avatar`, `bilgi`, `çark`, `komutbilgi`, `ping`, `sayıtut`, `sorusor`, `söyle`, `thanos`, `yazıtura`, `zar`'
+				value: '`avatar`, `bilgi`, `çark`, `komutbilgi`, `ping`, `sayıtut`, `sorusor`, `söyle`, `thanos`, `tkm`, `yazıtura`, `zar`'
 				}
 			],
 			timestamp: new Date(),

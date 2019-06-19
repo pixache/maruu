@@ -121,6 +121,7 @@ client.on("message", async message => {
 		if (talkedRecently.has(message.author.id)) {
 			let a = await message.channel.send(e(config.mavi, ":clock10: Her **4** saniyede bir komut kullanabilirsin."));
 			a.delete(2000);
+			return;
     	} else {
 			commandfile.run(client, message, args);
 			talkedRecently.add(message.author.id);
@@ -130,5 +131,5 @@ client.on("message", async message => {
     }
 	}	
 });
-//
+
 client.login(process.env.BOT_TOKEN);
