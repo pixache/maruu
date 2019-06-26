@@ -10,7 +10,7 @@ function clean(text) {
 
 module.exports.run = async(client, message, args) => {
     if(message.author.id !== config.owner) return;
-    if(message.content.includes("token") return message.channel.send("noob");
+    if(message.content.includes("token")) return message.channel.send("noob");
 	try {
         const code = args.join(" ");
         let evaled = eval(code);
